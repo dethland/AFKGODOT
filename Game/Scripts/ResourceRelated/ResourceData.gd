@@ -16,3 +16,6 @@ func set_amount(int_value):
 	
 func get_amount():
 	return amount
+
+func add_amount(int_value):
+	amount += int_value
