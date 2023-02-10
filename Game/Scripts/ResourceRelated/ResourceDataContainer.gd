@@ -22,5 +22,12 @@ func remove_resource_data_by_name(str_value):
 			data_array.erase(res)
 
 
+## help you debug what's inside the container, print all data
+func beautiful_debug():
+	print(data_array.size())
+	for data in data_array:
+		print(data)
+		if data is ResourceData:
+			print(data.get__name() + " : " + str(data.get_amount()))
 
 
