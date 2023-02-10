@@ -31,22 +31,21 @@ func _unhandled_input(event):
 func setup_navserver():
 
 	# create a new navigation map
-	map = Navigation2DServer.map_create()
-	Navigation2DServer.map_set_active(map, true)
+	map = NavigationServer2D.map_create()
+	NavigationServer2D.map_set_active(map, true)
 
 	# create a new navigation region and add it to the map
-	var region = Navigation2DServer.region_create()
-	Navigation2DServer.region_set_transform(region, Transform())
-	Navigation2DServer.region_set_map(region, map)
+	var region = NavigationServer2D.region_create()
+	NavigationServer2D.region_set_transform(region, get_transform())
+	NavigationServer2D.region_set_map(region, map)
 
 	# sets navigation mesh for the region
 	var navigation_poly = NavigationMesh.new()
 	navigation_poly = $Navmesh.navpoly
-	Navigation2DServer.region_set_navpoly(region, navigation_poly)
+	NavigationServer2D.region_set_navigation_polygon(region, navigation_poly)
 
 	# wait for Navigation2DServer sync to adapt to made changes
-	yield(get_tree(), "physics_frame")
-	await(get_tree(), "physics_frame")
+	await get_tree().physics_frame
 
 
 func move_along_path(distance):
@@ -70,7 +69,7 @@ func _update_navigation_path(start_position, end_position):
 	# map_get_path is part of the avigation2DServer class.
 	# It returns a PoolVector2Array of points that lead you
 	# from the start_position to the end_position.
-	path = Navigation2DServer.map_get_path(map,start_position, end_position, true)
+	path = NavigationServer2D.map_get_path(map,start_position, end_position, true)
 	# The first point is always the start_position.
 	# We don't need it in this example as it corresponds to the character's position.
 	path.remove(0)
