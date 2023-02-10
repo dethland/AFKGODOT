@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8aqoh71f61pu"]
+
+[ext_resource type="Script" path="res://Scripts/PlanRelated/StatusGenerator.gd" id="1_wc4yc"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_wc4yc")
