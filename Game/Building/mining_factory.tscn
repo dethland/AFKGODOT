@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvmfrw4yqltdw"]
+
+[ext_resource type="Script" path="res://Scripts/BuildingRelated/MiningFactory.gd" id="1_oxofq"]
+
+[node name="MiningFactory" type="Node2D"]
+script = ExtResource("1_oxofq")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(2, -2, 7, 136, 164, 154, 147, 3)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = 1.0
+offset_top = -29.0
+offset_right = 54.0
+offset_bottom = -3.0
+text = "wwww"
