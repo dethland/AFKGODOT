@@ -1,10 +1,8 @@
 extends Node
 class_name ResourceDataServer
 
-func _get_world_data():
-	pass
+func easy_resource_create(resource_name : String, element_name: String, element_value : int):
+	var resource = ResourceData.new()
+	resource.set_name(resource_name)
+	resource.add_element(element_name, element_value)
 	
-func easy_resource_create(str_value : String, int_value : int):
-	var result = ResourceData.new()
-	result.set__name(str_value)
-	result.set_amount(int_value)
