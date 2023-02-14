@@ -51,6 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Game"
+run/main_scene="res://Tests/resource_data_play_ground.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
