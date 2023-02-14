@@ -1,7 +1,9 @@
 extends Node2D
 
-@onready var navi_map = NavigationServer2D.map_create()
+@onready var navi_map
 @onready var navi_region = $NavigationRegion2D
+
+var start_position = Vector2.ZERO
 
 var path : PackedVector2Array
 
@@ -27,6 +29,8 @@ func custom_setup():
 	path = NavigationServer2D.map_get_path(map, start_position, end_position, true)
 	print(path)
 	
+	navi_map = map
+	
 	set_process(true)
 	
 	queue_redraw()
@@ -38,3 +42,9 @@ func _draw():
 		
 	for posi in path:
 		draw_circle(posi, 5, Color.DARK_RED)
+		
+func _process(delta):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var end_position = get_global_mouse_position()
+		path = NavigationServer2D.map_get_path(navi_map, start_position, end_position, true)
+		queue_redraw()
