@@ -1,21 +1,34 @@
 extends Object
 class_name ResourceData
 
-var _name : set = set__name, get = get__name
-var amount : set = set_amount, get = get_amount
+var elements = {}
+var resource_name = ""
 
+func set_name(name):
+	resource_name = name
+	
+func get_name():
+	return resource_name
+	
+func add_element(key, value):
+	elements[key] = value
+	
+func get_element(key):
+	if key not in elements:
+		push_error("Element not in this specific resource")
+		return -1
+	return elements[key]
 
-func set__name(str_value):
-	_name = str_value
+func set_element(key, amount):
+	if key not in elements:
+		push_error("Element not in this specific resource")
+	elements[key] = amount
 	
-func get__name():
-	return _name
+func get_all_elements():
+	return elements.keys()
 	
-func set_amount(int_value):
-	amount = int_value
+func add_quantity_element(key, amount):
+	if key not in elements:
+		push_error("Element not in this specific resource")
+	elements[key] += amount
 	
-func get_amount():
-	return amount
-
-func add_amount(int_value):
-	amount += int_value

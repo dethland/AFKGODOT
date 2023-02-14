@@ -2,24 +2,24 @@ extends Object
 class_name ResourceDataContainer
 
 var data_array = []
+var resources = {}
 
 func add_resource_data(data : ResourceData):
-	for res in data_array:
-		if res is ResourceData:
-			if res.get__name() != data.get__name(): # if same resource already there
-				continue
-			res.add_amount(data.get_amount())
-			return
-			
-	data_array.append(data)
+	var resource_name = data.get_name()
+	if resource_name in resources:
+		push_error("Resource already in container")
+		return -1
+	resources[resource_name] = data
 
-
-func remove_resource_data_by_name(str_value):
-	for res in data_array:
-		if res is ResourceData:
-			if res.get__name() != str_value:
-				continue
-			data_array.erase(res)
+func remove_resource_data_by_name(resource_name):
+	if resource_name not in resources:
+		push_error("Resource already in container")
+		return -1
+	resources.erase(resource_name)
+	
+func getResourceDataContainer():
+	return resources
+	
 
 
 ## help you debug what's inside the container, print all data
