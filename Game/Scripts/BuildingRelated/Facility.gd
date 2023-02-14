@@ -11,6 +11,10 @@ class_name Facility
 @export var var_3 : String 
 ## take how many operator to work
 @export var var_4 : int 
+## convert the resource from
+@export var var_5 : String
+## take how many of resource to start convert
+@export var var_6 : int
 enum facilityTypes {CONVERTE, STORE, GENERATE}
 
 @onready var container = ResourceDataContainer.new()
