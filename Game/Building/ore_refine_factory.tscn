@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc2x5hvkosyre"]
+
+[ext_resource type="Script" path="res://Scripts/BuildingRelated/Facility.gd" id="1_62cf1"]
+
+[node name="OreRefineFactory" type="Node2D"]
+script = ExtResource("1_62cf1")
+_name = "OreRefineFactory"
+facility_type = 0
+var_1 = 10
+var_2 = 1
+var_3 = "iron bar"
+var_4 = 3
+var_5 = "iron ore"
+var_6 = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.368627, 0.301961, 1)
+polygon = PackedVector2Array(2, 0, 2, 135, 143, 135, 143, 0)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = 1.0
+offset_top = -29.0
+offset_right = 54.0
+offset_bottom = -3.0
+text = "wwww"
