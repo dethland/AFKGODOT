@@ -19,3 +19,7 @@ func set_priority(priority):
 
 func get_priority():
 	return priority_
+	
+func debug_format():
+	var res = name_ + ": " + str(priority_)
+	return res

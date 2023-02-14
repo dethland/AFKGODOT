@@ -21,7 +21,7 @@ func check_housing_crisis(world_data):
 
 func check_population_crisis(world_data):
 	var workers_needed = world_data.get_workers_needed()
-	var population = world_data.get_num_colonists()
+	var population = world_data.get_population()
 	return population < workers_needed
 
 func generate_status_list(world_data):
@@ -37,3 +37,9 @@ func generate_status_list(world_data):
 		status_list.append(Status.new("population_crisis", 2))
 
 	return status_list
+	
+func _ready():
+	var test_world_data = load("res://Scripts/CodeForTest/FakeWorldData.gd").new()
+	var res = generate_status_list(test_world_data)
+	for s in res:
+		print(s.debug_format())

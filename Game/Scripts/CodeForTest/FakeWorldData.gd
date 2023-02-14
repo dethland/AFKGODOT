@@ -16,14 +16,14 @@ var world_data_dic = {
 func get_total_food():
 	return world_data_dic.Food
 	
+func get_total_water():
+	return world_data_dic.Water
+	
 func get_population():
-	return world_data_dic.pop
+	return world_data_dic.Pop
 	
 func get_houses():
 	return world_data_dic.House
 	
 func get_workers_needed():
-	return world_data_dic.Popneed
-	
-func get_num_colonists():
-	return get_population()
+	return world_data_dic.PopNeed
