@@ -8,6 +8,46 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"Facility",
+"language": &"GDScript",
+"path": "res://Scripts/BuildingRelated/Facility.gd"
+}, {
+"base": "Object",
+"class": &"ResourceData",
+"language": &"GDScript",
+"path": "res://Scripts/ResourceRelated/ResourceData.gd"
+}, {
+"base": "Object",
+"class": &"ResourceDataContainer",
+"language": &"GDScript",
+"path": "res://Scripts/ResourceRelated/ResourceDataContainer.gd"
+}, {
+"base": "Node",
+"class": &"ResourceDataServer",
+"language": &"GDScript",
+"path": "res://Scripts/ResourceRelated/ResourceDataServer.gd"
+}, {
+"base": "Node",
+"class": &"Status",
+"language": &"GDScript",
+"path": "res://Scripts/PlanRelated/Status.gd"
+}, {
+"base": "Node",
+"class": &"StatusGenerator",
+"language": &"GDScript",
+"path": "res://Scripts/PlanRelated/StatusGenerator.gd"
+}]
+_global_script_class_icons={
+"Facility": "",
+"ResourceData": "",
+"ResourceDataContainer": "",
+"ResourceDataServer": "",
+"Status": "",
+"StatusGenerator": ""
+}
+
 [application]
 
 config/name="Game"
@@ -18,10 +58,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
-
-[editor]
-
-export/convert_text_resources_to_binary=true
 
 [rendering]
 

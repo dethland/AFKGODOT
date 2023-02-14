@@ -22,5 +22,12 @@ func getResourceDataContainer():
 	
 
 
+## help you debug what's inside the container, print all data
+func beautiful_debug():
+	print(data_array.size())
+	for data in data_array:
+		print(data)
+		if data is ResourceData:
+			print(data.get__name() + " : " + str(data.get_amount()))
 
 
