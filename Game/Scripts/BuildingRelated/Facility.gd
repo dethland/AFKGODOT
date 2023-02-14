@@ -15,6 +15,8 @@ enum facilityTypes {CONVERTE, STORE, GENERATE}
 
 @onready var container = ResourceDataContainer.new()
 
+var colonist_list : Array
+
 var is_operating
 
 func generate_resource():
@@ -26,6 +28,20 @@ func get__name():
 
 func set__name(str_vlaue):
 	_name = str_vlaue
+	
+func colonist_enter(colonist):
+	pass
+	
+func colonist_exit(colonist):
+	pass
+	
+func debug_update():
+	var debug_text = ""
+	debug_text += _name + "\n"
+	$Debug.text = debug_text
+	
+func _ready():
+	debug_update()
 
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
