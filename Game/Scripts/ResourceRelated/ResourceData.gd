@@ -4,6 +4,8 @@ class_name ResourceData
 var elements = {}
 var resource_name = ""
 
+# elements will used a lot are : amount
+
 func set_name(name):
 	resource_name = name
 	
