@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
+FS="*res://Scripts/BuildingRelated/FacilityServer.gd"
 
 [editor]
 
