@@ -33,6 +33,6 @@ func check_requests():
 # send fufilled requests to houses
 func send_out_requests():
 	for request in out_requests:
-		var house = FS.get_facility_by_id(request[0])
+		var house : Facility = FS.get_facility_by_id(request[0])
 		house.send_people_to(request[1], request[2])
 	out_requests.clear()

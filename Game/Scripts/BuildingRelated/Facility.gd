@@ -47,6 +47,11 @@ func get__name():
 func set__name(str_vlaue):
 	_name = str_vlaue
 	
+func send_people_to(target_id, int_value):
+	# set int_value of colonist to the target_id
+	# for now only do debug print
+	print("I am house %s, I will send %s to facility #s" % [ID, int_value, target_id])
+	
 func colonist_enter(colonist):
 	colonist.queue_free()
 	num_colonist += 1
