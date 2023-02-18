@@ -24,7 +24,7 @@ var num_colonist : int
 
 var is_operating
 
-var ID : int # start from 1 `
+var ID : int : set = set_id, get = get_id# start from 1 `
 
 func _init():
 	ID = FS.init_facility(self)
@@ -34,6 +34,12 @@ func _init():
 func generate_resource():
 	container.stackable_add_resource_data(RDS.easy_resource_create(var_3, var_2))
 	container.beautiful_debug()
+
+func get_id():
+	return ID
+
+func set_id(int_value):
+	ID = int_value
 
 func get__name():
 	return _name
@@ -52,6 +58,12 @@ func debug_update():
 	var debug_text = ""
 	debug_text += _name + "\n"
 	$Debug.text = debug_text
+	
+func get_population():
+	return num_colonist
+	
+func set_population(int_value):
+	num_colonist = int_value
 	
 func _ready():
 	debug_update()
