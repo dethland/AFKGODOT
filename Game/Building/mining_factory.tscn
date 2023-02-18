@@ -6,10 +6,6 @@
 script = ExtResource("1_w8m5o")
 _name = "MiningFactory"
 facility_type = 2
-var_1 = 10
-var_2 = 5
-var_3 = "iron ore"
-var_4 = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(2, 0, 2, 135, 143, 135, 143, 0)
