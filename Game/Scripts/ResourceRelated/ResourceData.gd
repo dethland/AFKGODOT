@@ -1,7 +1,7 @@
 extends Object
 class_name ResourceData
 
-var elements = {}
+var elements = {"amount" : 0}
 var resource_name = ""
 
 # elements will used a lot are : amount
@@ -34,3 +34,11 @@ func add_quantity_element(key, amount):
 		push_error("Element not in this specific resource")
 	elements[key] += amount
 	
+func get_amount():
+	return elements["amount"]
+
+func set_amount(num):
+	elements["amount"] = num
+	
+func add_amount(num):
+	elements["amount"] = elements["amount"] + num

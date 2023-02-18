@@ -2,7 +2,7 @@ extends Node2D
 class_name Colonist
 
 var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
-var work_place_id_ : set = set_work_place_id, get = get_work_place_id
+var workplace_id_ : set = set_workplace_id, get = get_workplace_id
 
 func set_rest_place_id(rest_place_id):
 	rest_place_id_ = rest_place_id
@@ -10,11 +10,11 @@ func set_rest_place_id(rest_place_id):
 func get_rest_place_id():
 	return rest_place_id_
 
-func set_work_place_id(work_place_id):
-	work_place_id_ = work_place_id
+func set_workplace_id(workplace_id):
+	workplace_id_ = workplace_id
 
-func get_work_place_id():
-	return work_place_id_
+func get_workplace_id():
+	return workplace_id_
 
 func move_to(end_pos, delta):
 	var speed = 1000
