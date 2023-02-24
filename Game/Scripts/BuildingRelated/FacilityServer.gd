@@ -4,14 +4,16 @@ class_name FacilityServer
 var facility_array = []
 
 var facility_data_dic = {
-	"OreRefineFactory" : {"type": Facility.facilityTypes.CONVERTE, "time" : 10, "input" : ["iron_ore"], "output" : ["iron_bar"], "amount" : [3,1], "worker_capacity" : 4},
-	"MiningFactory" : {"type" : Facility.facilityTypes.GENERATE, "time" : 10, "output" : ["iron_bar"], "amount" : [5], "worker_capacity" : 4}
+	"OreRefineFactory" : {"type": Facility.facilityTypes.CONVERTE,
+		"time" : 10, "input" : ["iron_ore"], "output" : ["iron_bar"], "in_amount" : [3], 
+		"out_amount" : [1], "worker_capacity" : 4},
+	"MiningFactory" : {"type" : Facility.facilityTypes.GENERATE, 
+		"time" : 10, "output" : ["iron_ore"], "out_amount" : [5], "worker_capacity" : 4}
 }
 
 func init_facility(facility_node : Facility):
 	facility_array.append(facility_node)
 	var name_value = facility_node.get_name()
-	print(name_value)
 	if facility_data_dic.has(name_value):
 		facility_node.recipe = facility_data_dic[name_value]
 		facility_node.facility_type = facility_data_dic[name_value]["type"]
