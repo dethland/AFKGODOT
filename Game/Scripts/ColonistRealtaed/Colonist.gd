@@ -35,4 +35,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_to(Vector2(1000, 0), delta)
+	pass
