@@ -30,6 +30,14 @@ func easy_resource_create(str_value : String, int_value : int):
 	return result
 
 
+func convert_check_list_by_recipe(recipe):
+	var result = []
+	for item_index in range(0, recipe["input"].size()):
+		result.append(easy_resource_create(recipe["input"][item_index], \
+		recipe['in_amount'][item_index]))
+	return result
+
+
 func generate_resource_by_recipe(recipe):
 	var result = []
 	# load recipe data and return the product

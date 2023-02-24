@@ -1,8 +1,24 @@
 extends Object
 class_name ResourceDataContainer
 
-var data_array = []
+var data_array = [] # not sure where to use
 var resources = {}
+
+func get_resource_data_by_name(str_value):
+	var resource_name = str_value
+	if resource_name in resources:
+		return resources[resource_name]
+	return null
+		
+func has_enough_resource(check_list):
+	if check_list.is_empty():
+		return false
+	for item in check_list:
+		if not get_resource_data_by_name(item.get_name()) is ResourceData:
+			return false
+		if not item.get_amount() >= get_resource_data_by_name(item.get_name()).get_amount():
+			return false
+	return true
 
 func add_resource_data(data : ResourceData):
 	var resource_name = data.get_name()

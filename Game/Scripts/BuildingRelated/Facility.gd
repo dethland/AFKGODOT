@@ -28,7 +28,8 @@ func generate_resource():
 	
 func convert_resource():
 	# check if there is enough resource to convert
-	pass
+	var check_list = RDS.convert_check_list_by_recipe(recipe)
+	print("I have enough" + str(container.has_enough_resource(check_list)))
 
 func start_processing():
 	pass
