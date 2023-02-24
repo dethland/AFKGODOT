@@ -1,18 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvmfrw4yqltdw"]
+[gd_scene load_steps=3 format=3 uid="uid://cvmfrw4yqltdw"]
 
 [ext_resource type="Script" path="res://Scripts/BuildingRelated/Facility.gd" id="1_w8m5o"]
+[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_2o31j"]
 
 [node name="MiningFactory" type="Node2D"]
 script = ExtResource("1_w8m5o")
 _name = "MiningFactory"
 facility_type = 2
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(2, 0, 2, 135, 143, 135, 143, 0)
+area2d_path = NodePath("Area2D")
 
 [node name="Debug" type="Label" parent="."]
-offset_left = 1.0
-offset_top = -29.0
-offset_right = 54.0
-offset_bottom = -3.0
+offset_left = -26.0
+offset_top = -89.0
+offset_right = 27.0
+offset_bottom = -63.0
 text = "wwww"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2o31j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(64, -60.8, 64, 59, 59.6, 64, -60.1, 64, -64, 60.7, -64, -59, -59, -63.8, 59.1, -64)
