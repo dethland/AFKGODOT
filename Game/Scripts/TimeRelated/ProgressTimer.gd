@@ -1,4 +1,5 @@
-class_name Progress extends Node2D
+extends Node2D
+class_name ProgressTimer
 signal Progress_finish
 @onready var timer = Timer.new()
 
