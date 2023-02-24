@@ -30,6 +30,16 @@ func easy_resource_create(str_value : String, int_value : int):
 	return result
 
 
+func generate_resource_by_recipe(recipe):
+	var result = []
+	# load recipe data and return the product
+	# use index loop to look name and amount
+	for item_index in range(0, recipe["output"].size()):
+		result.append(easy_resource_create(recipe["output"][item_index], \
+		recipe['out_amount'][item_index]))
+	return result
+
+
 func save_resource_ref_dic():
 	var file = FileAccess.open(resource_ref_save_path, FileAccess.WRITE)
 	file.store_var(resource_ref_dic)
