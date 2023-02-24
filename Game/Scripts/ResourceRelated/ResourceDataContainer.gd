@@ -31,7 +31,6 @@ func getResourceDataContainer():
 
 ## help you debug what's inside the container, print all data
 func beautiful_debug():
-	print(resources.size())
 	for data_key in resources.keys():
 		print(resources[data_key])
 		if resources[data_key] is ResourceData:
