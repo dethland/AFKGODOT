@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Building/mining_factory.tscn" id="1_jhpsh"]
 [ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Building/ore_refine_factory.tscn" id="2_sluuv"]
-[ext_resource type="PackedScene" uid="uid://cicxehw4ltipp" path="res://Colonist/Colonist.tscn" id="3_j2bcv"]
+[ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Colonist/Colonist.tscn" id="3_j2bcv"]
 
 [node name="FacilityPlayGround" type="Node2D"]
 
