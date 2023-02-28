@@ -32,7 +32,7 @@ func check_requests():
 # send fufilled requests to facilities
 func send_out_requests():
 	for request in out_requests:
-		var facility = FacilityServer.get_facility(request[0])
+		var facility = FS.get_facility_by_id(request[0])
 		facility.send_resource_to(request[1], request[2])
 	out_requests.clear()
 

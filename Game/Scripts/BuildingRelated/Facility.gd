@@ -52,6 +52,11 @@ func send_people_to(target_id, int_value):
 	# for now only do debug print
 	print("I am house %s, I will send %s people to facility %s" % [ID, int_value, target_id])
 	
+func send_resource_to(target_id, resource_data):
+	var resource_amount = resource_data.get_amount()
+	var resource_name = resource_data.get_name()
+	print("I am facility %s, I will send %s %s to facility %s" % [ID, resource_amount, resource_name, target_id])
+	
 func colonist_enter(colonist):
 	colonist.queue_free()
 	num_colonist += 1
