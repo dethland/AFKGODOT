@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Colonist
+class_name TransportUnit
 
 
 var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
