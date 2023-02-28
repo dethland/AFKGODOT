@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bd4pe0cym7imu"]
 
 [ext_resource type="Script" path="res://Scripts/ColonistRelated/Colonist.gd" id="1_bjqc3"]
 [ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_1sgle"]

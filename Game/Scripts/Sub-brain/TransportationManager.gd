@@ -10,20 +10,21 @@ func add_request(caller_id, resource_data:ResourceData):
 
 func check_requests():
 	for request in unfinished_requests:
-		var quantity_needed = request[1]
-		for facility in facilities:
-			var resource_amount = house.get_resource_amount(resource_data)
+		var quantity_needed = request[1].get_amount()
+		for facility in FS.get_facilities_by_type():
+			var facility_resource_data = facility.container.get_resource_data_by_name(request[1].get_name())
+			var resource_amount = facility_resource_data.get_amount()
 			
 			# enough resources in facility
 			if resource_amount >= quantity_needed:
 				out_requests.append([facility.get_id(), request[0], request[1]])
-				facility.set_resource_amount(resource_data.get_id(), resource_amount - quantity_needed)
+				facility_resource_data.set_amount(resource_amount - quantity_needed)
 				break
 			# need more resources than in facility
 			else:
 				quantity_needed -= resource_amount
-				out_requests.append([facility.get_id(), request[0], colonists_needed])
-				facility.set_resource_amount(resource_data.get_id(), 0)
+				out_requests.append([facility.get_id(), request[0], request[1]])
+				facility_resource_data.set_amount(0)
 	unfinished_requests.clear()
 	send_out_requests()
 
@@ -31,7 +32,7 @@ func check_requests():
 # send fufilled requests to facilities
 func send_out_requests():
 	for request in out_requests:
-		var facility = FacilityServer.get_facility(request[0])
+		var facility = FS.get_facility_by_id(request[0])
 		facility.send_resource_to(request[1], request[2])
 	out_requests.clear()
 
