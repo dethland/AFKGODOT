@@ -31,20 +31,22 @@ func check_requests():
 
 # send fufilled requests to facilities
 func send_out_requests(override=null):
-	if not override:
+	if override != null:
+		for request in override:
+			var facility = FS.get_facility_by_id(request[0])
+			facility.send_resource_to(request[1], request[2])
+	else:
 		for request in out_requests:
 			var facility = FS.get_facility_by_id(request[0])
 			facility.send_resource_to(request[1], request[2])
 			out_requests.clear()
-	else:
-		for request in override:
-			var facility = FS.get_facility_by_id(request[0])
-			facility.send_resource_to(request[1], request[2])
 
 func _process(delta):
-	var resource_data = ResourceData.new()
-	resource_data.set_name("gold")
-	resource_data.set_amount(20)
-	var test_out_requests = [[1, 2, resource_data]]
-	send_out_requests(test_out_requests)
+	if Input.is_action_just_pressed("ui_accept"):
+		print("requst sent")
+		var resource_data = ResourceData.new()
+		resource_data.set_name("gold")
+		resource_data.set_amount(20)
+		var test_out_requests = [[1, 2, resource_data]]
+		send_out_requests(test_out_requests)
 
