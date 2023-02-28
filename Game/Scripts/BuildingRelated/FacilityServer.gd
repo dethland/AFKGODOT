@@ -28,6 +28,15 @@ func get_houses_list():
 				result.append(facility)
 	return result
 	
+	
+func get_facilities_by_type(facilityType=null):
+	var result = []
+	for facility in facility_array:
+		if facility is Facility:
+			if facility.facility_type == facilityType or not facilityType:
+				result.append(facility)
+	return result
+	
 
 func get_facility_by_id(int_value):
 	var result : Facility
