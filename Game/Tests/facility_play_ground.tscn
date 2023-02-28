@@ -1,16 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://be3c5vdxyma7n"]
+[gd_scene load_steps=8 format=3 uid="uid://be3c5vdxyma7n"]
 
 [ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Building/mining_factory.tscn" id="1_jhpsh"]
 [ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Building/ore_refine_factory.tscn" id="2_sluuv"]
-[ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Colonist/Colonist.tscn" id="3_j2bcv"]
+[ext_resource type="Script" path="res://Scripts/Sub-brain/HumanResource.gd" id="4_a7dqf"]
+[ext_resource type="Script" path="res://Scripts/NaviRelated/NaviServer.gd" id="4_vmu76"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcvgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dngr"]
+size = Vector2(2146, 20)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_m5msy"]
+vertices = PackedVector2Array(79, 46, 69, -27, 1044, -10, 1045, 220, 78, 222)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)]
+outlines = [PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)]
 
 [node name="FacilityPlayGround" type="Node2D"]
 
 [node name="MiningFactory" parent="." instance=ExtResource("1_jhpsh")]
-position = Vector2(432, 87)
+position = Vector2(811, 157)
 
 [node name="OreRefineFactory" parent="." instance=ExtResource("2_sluuv")]
 position = Vector2(96, 86)
 
-[node name="Colonist" parent="." instance=ExtResource("3_j2bcv")]
-position = Vector2(513, 93)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fcvgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(627, 232)
+shape = SubResource("RectangleShape2D_4dngr")
+
+[node name="NaviServer" type="Node2D" parent="."]
+script = ExtResource("4_vmu76")
+navi_region = NodePath("../NavigationRegion2D")
+
+[node name="HumanResource" type="Node" parent="."]
+script = ExtResource("4_a7dqf")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_m5msy")
