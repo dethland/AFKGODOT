@@ -33,7 +33,7 @@ func get_facilities_by_type(facilityType=null):
 	var result = []
 	for facility in facility_array:
 		if facility is Facility:
-			if facility.facility_type == facilityType or not facilityType:
+			if facility.facility_type == facilityType or facilityType == null:
 				result.append(facility)
 	return result
 	
