@@ -40,11 +40,22 @@ func remove_resource_data_by_name(resource_name):
 		return -1
 	resources.erase(resource_name)
 	
-func getResourceDataContainer():
+func get_resource_data_container():
 	return resources
 	
-
-
+func combine_resource_data(data: ResourceData):
+	var data_elements = data.get_elements()
+	for resource in resources:
+		if resource.get_name() == data.get_name():
+			for element in data_elements:
+				if element in resource.get_keys():
+					resource.add_quantity_element(element, data_elements[element])
+				else:
+					resource.add_element(element, data_elements[element])
+					
+func subtract_resource_element_quantity(resource: ResourceData, amount):
+	resources[resource.get_name()].sub_amount(amount)
+	
 ## help you debug what's inside the container, print all data
 func beautiful_debug():
 	for data_key in resources.keys():
