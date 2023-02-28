@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlt6juy2cj3ee"]
+
+[ext_resource type="Script" path="res://Scripts/CodeForTest/FakeWorldData.gd" id="1_m3svv"]
+
+[node name="FakeWorld" type="Node"]
+script = ExtResource("1_m3svv")
