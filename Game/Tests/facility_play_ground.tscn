@@ -19,9 +19,11 @@ outlines = [PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)]
 
 [node name="MiningFactory" parent="." instance=ExtResource("1_jhpsh")]
 position = Vector2(811, 157)
+colonist_path = "res://Colonist/Colonist.tscn"
 
 [node name="OreRefineFactory" parent="." instance=ExtResource("2_sluuv")]
 position = Vector2(96, 86)
+colonist_path = "res://Colonist/Colonist.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_fcvgo")
@@ -39,3 +41,5 @@ script = ExtResource("4_a7dqf")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_m5msy")
+
+[node name="Colonists" type="Node2D" parent="."]

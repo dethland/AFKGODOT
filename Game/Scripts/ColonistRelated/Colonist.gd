@@ -8,6 +8,8 @@ var path : PackedVector2Array
 var first_time : bool = true
 var is_requesting_path : bool  = false
 
+var navi : NaviServer
+
 func set_rest_place_id(rest_place_id):
 	rest_place_id_ = rest_place_id
 
@@ -20,10 +22,10 @@ func set_workplace_id(workplace_id):
 func get_workplace_id():
 	return workplace_id_
 	
-#func request_path(target_position):
-#	var result = NS.get_navi_path_to(position, target_position)
-#	result.remove_at(0)
-#	return result
+func request_path(target_position):
+	var result = navi.get_navi_path_to(position, target_position)
+	result.remove_at(0)
+	return result
 	
 
 # return true when arrive position
@@ -44,8 +46,8 @@ func move_to(end_pos, delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if first_time:
-#		path = request_path(position + Vector2(500,0))
+	if navi != null and workplace_id_ != null and first_time:
+		path = request_path(FS.get_facility_by_id(workplace_id_).position)
 		first_time = false
 		print(path)
 		

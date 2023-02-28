@@ -5,6 +5,9 @@ class_name Facility
 @export var facility_type : facilityTypes
 enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
+@export_file var colonist_path
+
+
 @export var area2d_path : NodePath
 
 var recipe : Dictionary 
@@ -29,7 +32,7 @@ func generate_resource():
 func convert_resource():
 	# check if there is enough resource to convert
 	var check_list = RDS.convert_check_list_by_recipe(recipe)
-	print("I have enough" + str(container.has_enough_resource(check_list)))
+	print("I have enough: " + str(container.has_enough_resource(check_list)))
 
 func start_processing():
 	pass
@@ -51,6 +54,14 @@ func send_people_to(target_id, int_value):
 	# set int_value of colonist to the target_id
 	# for now only do debug print
 	print("I am house %s, I will send %s people to facility %s" % [ID, int_value, target_id])
+	var colonist = load(colonist_path)
+	var instance :Colonist = colonist.instantiate()
+	instance.position = self.position
+	instance.set_workplace_id(target_id)
+	instance.navi = get_parent().get_node("NaviServer")
+	get_parent().get_node("Colonists").add_child(instance)
+	
+	
 	
 func colonist_enter(colonist):
 	colonist.queue_free()
@@ -78,9 +89,11 @@ func _ready():
 		area2d.connect("body_entered", on_body_entered)
 
 func on_body_entered(body):
-	if body is Colonist:
+	if body is CharacterBody2D:
+		print('enter a body')
 		# check the colonist target, if self delete body
-		pass
+		if body.get_parent().get_workplace_id() == ID:
+			colonist_enter(body.get_parent())
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_accept"):

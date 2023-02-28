@@ -1,17 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc2x5hvkosyre"]
+[gd_scene load_steps=3 format=3 uid="uid://dc2x5hvkosyre"]
 
 [ext_resource type="Script" path="res://Scripts/BuildingRelated/Facility.gd" id="1_62cf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2lrl"]
+size = Vector2(140, 135)
 
 [node name="OreRefineFactory" type="Node2D"]
 script = ExtResource("1_62cf1")
 _name = "OreRefineFactory"
 facility_type = 0
-var_1 = 10
-var_2 = 1
-var_3 = "iron bar"
-var_4 = 3
-var_5 = "iron ore"
-var_6 = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 0.368627, 0.301961, 1)
@@ -23,3 +20,11 @@ offset_top = -29.0
 offset_right = 54.0
 offset_bottom = -3.0
 text = "wwww"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(72, 66.5)
+shape = SubResource("RectangleShape2D_r2lrl")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]
