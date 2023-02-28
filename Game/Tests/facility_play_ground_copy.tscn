@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnp80lo6321dd"]
+
+[ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Building/mining_factory.tscn" id="1_uucqy"]
+[ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Building/ore_refine_factory.tscn" id="2_u2met"]
+[ext_resource type="Script" path="res://Scripts/NaviRelated/NaviServer.gd" id="3_5dmce"]
+[ext_resource type="Script" path="res://Scripts/Sub-brain/TransportationManager.gd" id="4_su4k0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcvgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dngr"]
+size = Vector2(2146, 20)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_m5msy"]
+vertices = PackedVector2Array(79, 46, 69, -27, 1044, -10, 1045, 220, 78, 222)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)]
+outlines = [PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)]
+
+[node name="FacilityPlayGround" type="Node2D"]
+
+[node name="MiningFactory" parent="." instance=ExtResource("1_uucqy")]
+position = Vector2(811, 157)
+colonist_path = "res://Colonist/Colonist.tscn"
+
+[node name="OreRefineFactory" parent="." instance=ExtResource("2_u2met")]
+position = Vector2(96, 86)
+colonist_path = "res://Colonist/Colonist.tscn"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fcvgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(627, 232)
+shape = SubResource("RectangleShape2D_4dngr")
+
+[node name="NaviServer" type="Node2D" parent="."]
+script = ExtResource("3_5dmce")
+navi_region = NodePath("../NavigationRegion2D")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_m5msy")
+
+[node name="Colonists" type="Node2D" parent="."]
+
+[node name="TransportationManager" type="Node" parent="."]
+script = ExtResource("4_su4k0")
