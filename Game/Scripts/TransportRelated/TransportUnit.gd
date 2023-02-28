@@ -2,31 +2,30 @@ extends CharacterBody2D
 class_name TransportUnit
 
 
-var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
-var workplace_id_ : set = set_workplace_id, get = get_workplace_id
+var target_id_ : set = set_target_id, get = get_target_id
+var resource_data_ : set = set_resource_data, get = get_resource_data
 var path : PackedVector2Array
 var first_time : bool = true
 var is_requesting_path : bool  = false
 
 var navi : NaviServer
 
-func set_rest_place_id(rest_place_id):
-	rest_place_id_ = rest_place_id
+func set_target_id(target_id):
+	target_id_ = target_id
 
-func get_rest_place_id():
-	return rest_place_id_
+func get_target_id():
+	return target_id_
+	
+func set_resource_data(resource_data):
+	resource_data_ = resource_data
 
-func set_workplace_id(workplace_id):
-	workplace_id_ = workplace_id
-
-func get_workplace_id():
-	return workplace_id_
+func get_resource_data():
+	return resource_data_
 	
 func request_path(target_position):
 	var result = navi.get_navi_path_to(position, target_position)
 	result.remove_at(0)
 	return result
-	
 
 # return true when arrive position
 func move_to(end_pos, delta):
@@ -46,8 +45,8 @@ func move_to(end_pos, delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if navi != null and workplace_id_ != null and first_time:
-		path = request_path(FS.get_facility_by_id(workplace_id_).position)
+	if navi != null and first_time:
+		path = request_path(FS.get_facility_by_id(target_id_).position)
 		first_time = false
 		print(path)
 		
