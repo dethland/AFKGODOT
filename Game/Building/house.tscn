@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://csvs2a3go0k5q"]
+
+[ext_resource type="Script" path="res://Scripts/BuildingRelated/Facility.gd" id="1_jic4l"]
+[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_v62ta"]
+
+[node name="House" type="Node2D"]
+script = ExtResource("1_jic4l")
+_name = "House"
+facility_type = 3
+colonist_path = "res://Colonist/Colonist.tscn"
+area2d_path = NodePath("Area2D")
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -89.0
+offset_right = 27.0
+offset_bottom = -63.0
+text = "wwww"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v62ta")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(64, -60.8, 64, 59, 59.6, 64, -60.1, 64, -64, 60.7, -64, -59, -59, -63.8, 59.1, -64)
+
+[connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]

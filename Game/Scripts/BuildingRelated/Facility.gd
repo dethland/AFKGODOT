@@ -60,6 +60,7 @@ func send_people_to(target_id, int_value):
 	instance.set_workplace_id(target_id)
 	instance.navi = get_parent().get_node("NaviServer")
 	get_parent().get_node("Colonists").add_child(instance)
+
 	
 	
 	
@@ -103,8 +104,8 @@ func on_body_entered(body):
 	if body is CharacterBody2D:
 		print('enter a body')
 		# check the colonist target, if self delete body
-		if body.get_parent().get_workplace_id() == ID:
-			colonist_enter(body.get_parent())
+		if body.get_workplace_id() == ID:
+			colonist_enter(body)
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_accept"):
