@@ -12,8 +12,8 @@ size = Vector2(2146, 20)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m5msy"]
 vertices = PackedVector2Array(79, 46, 69, -27, 1044, -10, 1045, 220, 78, 222)
-polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)]
-outlines = [PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)])
 
 [node name="FacilityPlayGround" type="Node2D"]
 
@@ -34,12 +34,14 @@ shape = SubResource("RectangleShape2D_4dngr")
 
 [node name="NaviServer" type="Node2D" parent="."]
 script = ExtResource("4_vmu76")
-navi_region = NodePath("../NavigationRegion2D")
+navi_region = NodePath("NavigationRegion2D")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NaviServer"]
+unique_name_in_owner = true
+navigation_polygon = SubResource("NavigationPolygon_m5msy")
 
 [node name="HumanResource" type="Node" parent="."]
 script = ExtResource("4_a7dqf")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_m5msy")
-
 [node name="Colonists" type="Node2D" parent="."]
+unique_name_in_owner = true

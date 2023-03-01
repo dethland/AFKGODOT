@@ -2,7 +2,7 @@ extends Node2D
 class_name NaviServer
 
 @onready var navi_map
-@export_node_path(NavigationRegion2D) var navi_region
+@export_node_path("NavigationRegion2D") var navi_region
 
 var path : PackedVector2Array
 
@@ -16,8 +16,7 @@ func custom_setup():
 	var region = NavigationServer2D.region_create()
 	NavigationServer2D.region_set_transform(region, Transform2D())
 	NavigationServer2D.region_set_map(region, map)
-	NavigationServer2D.region_set_navigation_polygon(region, get_node(navi_region).get_navigation_polygon()
-)
+	NavigationServer2D.region_set_navigation_polygon(region, %NavigationRegion2D.get_navigation_polygon())
 	
 	await get_tree().physics_frame
 	

@@ -1,7 +1,7 @@
 extends Node2D
 class_name Facility
 
-@onready @export var _name : String : set = set__name, get = get__name
+@export var _name : String : set = set__name, get = get__name
 @export var facility_type : facilityTypes
 enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
