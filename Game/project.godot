@@ -18,11 +18,6 @@ config/icon="res://icon.svg"
 
 RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
 FS="*res://Scripts/BuildingRelated/FacilityServer.gd"
-NS="*res://Scripts/NaviRelated/NaviServer.gd"
-
-[editor]
-
-export/convert_text_resources_to_binary=true
 
 [rendering]
 
