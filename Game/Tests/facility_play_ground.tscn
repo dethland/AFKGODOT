@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Building/mining_factory.tscn" id="1_jhpsh"]
 [ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Building/ore_refine_factory.tscn" id="2_sluuv"]
+[ext_resource type="Script" path="res://Scripts/NaviRelated/NaviSetup.gd" id="4_16nug"]
 [ext_resource type="Script" path="res://Scripts/Sub-brain/HumanResource.gd" id="4_a7dqf"]
-[ext_resource type="Script" path="res://Scripts/NaviRelated/NaviServer.gd" id="4_vmu76"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcvgo"]
 
@@ -32,13 +32,9 @@ physics_material_override = SubResource("PhysicsMaterial_fcvgo")
 position = Vector2(627, 232)
 shape = SubResource("RectangleShape2D_4dngr")
 
-[node name="NaviServer" type="Node2D" parent="."]
-script = ExtResource("4_vmu76")
-navi_region = NodePath("NavigationRegion2D")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NaviServer"]
-unique_name_in_owner = true
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_m5msy")
+script = ExtResource("4_16nug")
 
 [node name="HumanResource" type="Node" parent="."]
 script = ExtResource("4_a7dqf")

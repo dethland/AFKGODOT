@@ -23,7 +23,7 @@ func get_workplace_id():
 	return workplace_id_
 	
 func request_path(target_position):
-	var result = navi.get_navi_path_to(position, target_position)
+	var result = NS.get_navi_path_to(position, target_position)
 	result.remove_at(0)
 	return result
 	
@@ -46,7 +46,7 @@ func move_to(end_pos, delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if navi != null and workplace_id_ != null and first_time:
+	if workplace_id_ != null and first_time:
 		path = request_path(FS.get_facility_by_id(workplace_id_).position)
 		first_time = false
 		print(path)
