@@ -1,6 +1,7 @@
 extends Control
 
 @export var save = NodePath()
+@export var load = NodePath()
 
 
 func _process(delta):
