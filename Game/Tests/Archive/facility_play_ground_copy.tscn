@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnp80lo6321dd"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Building/mining_factory.tscn" id="1_uucqy"]
-[ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Building/ore_refine_factory.tscn" id="2_u2met"]
+[ext_resource type="PackedScene" uid="uid://cvmfrw4yqltdw" path="res://Scenes/Building/mining_factory.tscn" id="1_uucqy"]
+[ext_resource type="PackedScene" uid="uid://dc2x5hvkosyre" path="res://Scenes/Building/ore_refine_factory.tscn" id="2_u2met"]
 [ext_resource type="Script" path="res://Scripts/NaviRelated/NaviServer.gd" id="3_5dmce"]
 [ext_resource type="Script" path="res://Scripts/Sub-brain/TransportationManager.gd" id="4_su4k0"]
 

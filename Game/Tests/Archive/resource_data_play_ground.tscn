@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Tests/Archive/resource_data_play_ground.gd" id="1_vn74i"]
+
+[node name="ResourceDataPlayGround" type="Node2D"]
+visible = false
+script = ExtResource("1_vn74i")
+
+[node name="Node" type="Node" parent="."]
