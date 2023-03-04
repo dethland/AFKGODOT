@@ -12,7 +12,7 @@ enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
 var recipe : Dictionary 
 
-
+signal item_changed
 
 @onready var container = ResourceDataContainer.new()
 
@@ -28,11 +28,13 @@ func generate_resource():
 	for item in item_list:
 		container.stackable_add_resource_data(item)
 	container.beautiful_debug()
+	emit_signal("item_changed")
 	
 func convert_resource():
 	# check if there is enough resource to convert
 	var check_list = RDS.convert_check_list_by_recipe(recipe)
 	print("I have enough: " + str(container.has_enough_resource(check_list)))
+	emit_signal("item_changed")
 
 func start_processing():
 	pass
@@ -61,9 +63,7 @@ func send_people_to(target_id, int_value):
 	instance.navi = get_parent().get_node("NaviServer")
 	get_parent().get_node("Colonists").add_child(instance)
 
-	
-	
-	
+
 func send_resource_to(target_id, resource_data):
 	var resource_amount = resource_data.get_amount()
 	var resource_name = resource_data.get_name()
@@ -83,6 +83,7 @@ func colonist_exit():
 	num_colonist -= 1
 	
 func debug_update():
+	# for now only print the name of facility on the top of the head
 	var debug_text = ""
 	debug_text += get__name() + "\n"
 	$Debug.text = debug_text
@@ -109,6 +110,7 @@ func on_body_entered(body):
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_accept"):
+		# similate the cycle function called
 		match facility_type:
 			facilityTypes.CONVERTE: 
 				convert_resource()

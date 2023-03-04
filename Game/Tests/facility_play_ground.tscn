@@ -8,12 +8,12 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcvgo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dngr"]
-size = Vector2(2146, 20)
+size = Vector2(1493, 20)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m5msy"]
-vertices = PackedVector2Array(79, 46, 69, -27, 1044, -10, 1045, 220, 78, 222)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(79, 46, 78, 222, 1045, 220, 1044, -10, 69, -27)])
+vertices = PackedVector2Array(80, -18, 1047, -14, 1045, 220, 78, 222)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(78, 222, 1045, 220, 1047, -14, 80, -18)])
 
 [node name="FacilityPlayGround" type="Node2D"]
 
@@ -25,11 +25,11 @@ colonist_path = "res://Colonist/Colonist.tscn"
 position = Vector2(96, 86)
 colonist_path = "res://Colonist/Colonist.tscn"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_fcvgo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(627, 232)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(300.5, 232)
 shape = SubResource("RectangleShape2D_4dngr")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
