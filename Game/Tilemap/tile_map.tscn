@@ -1,4 +1,59 @@
-[gd_scene format=3 uid="uid://cwl43lyr4om72"]
+[gd_scene load_steps=10 format=3 uid="uid://cwl43lyr4om72"]
+
+[ext_resource type="Texture2D" uid="uid://b5ib7a1jcntcx" path="res://Asset/tile-proto.png" id="1_v82sf"]
+[ext_resource type="Script" path="res://Tilemap/tile_map.gd" id="2_46ts4"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_tun4o"]
+tile_data = PackedInt32Array(0, 65536, 1, 65536, 0, 0, 65537, 65536, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_5563i"]
+tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 0, 131072, 0, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qfmh"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sswvl"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_f2qlx"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gef7m"]
+texture = ExtResource("1_v82sf")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8)
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_f2qlx")
+1:1/0/custom_data_0 = 3
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_sswvl")
+1:0/0/custom_data_0 = 2
+
+[sub_resource type="TileSet" id="TileSet_n3f2i"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_1qfmh")
+navigation_layer_0/layers = 1
+custom_data_layer_0/name = "ID"
+custom_data_layer_0/type = 2
+sources/0 = SubResource("TileSetAtlasSource_gef7m")
+pattern_0 = SubResource("TileMapPattern_tun4o")
+pattern_1 = SubResource("TileMapPattern_5563i")
 
 [node name="TileMap" type="TileMap"]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_n3f2i")
 format = 2
+layer_0/tile_data = PackedInt32Array(262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 65536, 1, 327692, 65536, 1, 393229, 65536, 1, 458766, 65536, 1, 327691, 0, 0, 327690, 0, 0, 327689, 0, 0, 327688, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 458765, 0, 0, 458764, 0, 0, 458763, 0, 0, 458762, 0, 0, 458761, 0, 0, 458760, 0, 0, 458759, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 458755, 0, 0, 458754, 0, 0, 458753, 0, 0, 458752, 0, 0, 393228, 0, 0, 393227, 0, 0, 393226, 0, 0, 393225, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 393221, 0, 0, 393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 393216, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 524301, 0, 0, 524300, 0, 0, 524299, 0, 0, 524298, 0, 0, 524297, 0, 0, 524296, 0, 0, 524295, 0, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 524288, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 589825, 0, 0, 589824, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 524302, 0, 0, 524303, 65536, 1, 589844, 0, 0, 589845, 0, 0)
+script = ExtResource("2_46ts4")
