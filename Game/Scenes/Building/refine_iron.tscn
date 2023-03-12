@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv381m5fa70f4"]
+
+[ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_b46xj"]
+
+[node name="RefineIron" instance=ExtResource("1_b46xj")]
+_name = "RefineIron"

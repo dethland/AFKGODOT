@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsqfnf2db3y6i"]
+
+[ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_6welt"]
+
+[node name="MiningIron" instance=ExtResource("1_6welt")]
+_name = "MiningIron"
+facility_type = 2
