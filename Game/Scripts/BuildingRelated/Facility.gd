@@ -83,11 +83,6 @@ func colonist_enter(colonist):
 func colonist_exit():
 	num_colonist -= 1
 	
-func debug_update():
-	# for now only print the name of facility on the top of the head
-	var debug_text = ""
-	debug_text += get__name() + "\n"
-	$Debug.text = debug_text
 	
 func get_population():
 	return num_colonist
@@ -96,7 +91,6 @@ func set_population(int_value):
 	num_colonist = int_value
 	
 func _ready():
-	debug_update()
 	ID = FS.init_facility(self)
 	if not area2d_path.is_empty():
 		var area2d : Area2D = get_node(area2d_path)

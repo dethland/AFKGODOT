@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/BuildingRelated/Facility.gd" id="1_4vosc"]
 
 [node name="EmptyFacility" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_4vosc")
 colonist_path = "res://Scenes/Colonist/Colonist.tscn"
 area2d_path = NodePath("Area2D")

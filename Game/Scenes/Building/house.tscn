@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bovf7va0c1wh6"]
+[gd_scene load_steps=3 format=3 uid="uid://bovf7va0c1wh6"]
 
 [ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_klysv"]
+[ext_resource type="Texture2D" uid="uid://c06rt2fni7vrd" path="res://Asset/Building/house.png" id="2_sevx2"]
 
 [node name="House" instance=ExtResource("1_klysv")]
 _name = "House"
 facility_type = 3
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_sevx2")

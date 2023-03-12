@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bynajv706gx1l"]
+[gd_scene load_steps=6 format=3 uid="uid://bynajv706gx1l"]
 
+[ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="3_cerfu"]
+[ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="4_0iegv"]
 [ext_resource type="Script" path="res://Scripts/Sub-brain/HumanResource.gd" id="4_oya2h"]
+[ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Scenes/Colonist/Colonist.tscn" id="5_gjbyw"]
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="5_jjav4"]
 
 [node name="FacilityPlayGround" type="Node2D"]
@@ -12,3 +15,17 @@ script = ExtResource("4_oya2h")
 unique_name_in_owner = true
 
 [node name="TileMap" parent="." instance=ExtResource("5_jjav4")]
+scale = Vector2(1, 1)
+
+[node name="RefineIron" parent="." instance=ExtResource("3_cerfu")]
+position = Vector2(368, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(192, 21)
+zoom = Vector2(2, 2)
+
+[node name="House" parent="." instance=ExtResource("4_0iegv")]
+position = Vector2(101, -1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_gjbyw")]
+position = Vector2(103, 48)

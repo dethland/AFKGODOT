@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://sce8bxj7mrpk"]
 
 [ext_resource type="Script" path="res://Scripts/ColonistRelated/Colonist.gd" id="1_qolt3"]
-[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_rj7u6"]
+[ext_resource type="Texture2D" uid="uid://pqvn05ojnbbd" path="res://Asset/Colonist/colonist.png" id="2_c07pa"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.25)
+texture_filter = 1
 script = ExtResource("1_qolt3")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(57.1, -63.1, 59.1, -63.1, 59.1, -62.1, 60.1, -62.1, 60.1, -61.1, 61.1, -61.1, 61.1, -60.1, 62.1, -60.1, 62.1, -59.1, 63.1, -59.1, 63.1, -57.1, 64, -57.1, 64, 57.1, 63.1, 57.1, 63.1, 59.1, 62.1, 59.1, 62.1, 60.1, 61.1, 60.1, 61.1, 61.1, 60.1, 61.1, 60.1, 62.1, 59.1, 62.1, 59.1, 63.1, 57.1, 63.1, 57.1, 64, -57.1, 64, -57.1, 63.1, -59.1, 63.1, -59.1, 62.1, -60.1, 62.1, -60.1, 61.1, -61.1, 61.1, -61.1, 60.1, -62.1, 60.1, -62.1, 59.1, -63.1, 59.1, -63.1, 57.1, -64, 57.1, -64, -57.1, -63.1, -57.1, -63.1, -59.1, -62.1, -59.1, -62.1, -60.1, -61.1, -60.1, -61.1, -61.1, -60.1, -61.1, -60.1, -62.1, -59.1, -62.1, -59.1, -63.1, -57.1, -63.1, -57.1, -64, 57.1, -64)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rj7u6")
+texture = ExtResource("2_c07pa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(5, -14, 9, -11, 9, -8.9, 8.3, -4, 12.7, 10, 9.7, 10, 7, 12, 7, 16, -9.8, 16, -10, -9, -8.1, -9, -5, -13.6, -5, -16, 5, -16)
