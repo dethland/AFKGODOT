@@ -13,7 +13,7 @@ var facility_data_dic = {
 
 func init_facility(facility_node : Facility):
 	facility_array.append(facility_node)
-	var name_value = facility_node.get_name()
+	var name_value = facility_node.get__name()
 	if facility_data_dic.has(name_value):
 		facility_node.recipe = facility_data_dic[name_value]
 		facility_node.facility_type = facility_data_dic[name_value]["type"]

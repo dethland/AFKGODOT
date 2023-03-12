@@ -24,6 +24,7 @@ var ID : int : set = set_id, get = get_id # start from 1 `
 
 
 func generate_resource():
+	print(recipe)
 	var item_list = RDS.generate_resource_by_recipe(recipe)
 	for item in item_list:
 		container.stackable_add_resource_data(item)
