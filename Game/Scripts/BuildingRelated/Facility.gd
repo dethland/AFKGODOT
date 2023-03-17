@@ -26,7 +26,9 @@ var ID : int : set = set_id, get = get_id # start from 1
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
 func send_request_for_colonist():
-	pass
+	var colonists_needed = get_desired_population() - num_colonist
+	if colonists_needed > 0:
+		HRS.add_request(ID, colonists_needed)
 
 
 func generate_resource():

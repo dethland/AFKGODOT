@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
 FS="*res://Scripts/BuildingRelated/FacilityServer.gd"
 NS="*res://Scripts/NaviRelated/NaviServer.gd"
+HRS="*res://Scripts/Sub-brain/HumanResource.gd"
 
 [importer_defaults]
 
