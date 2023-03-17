@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Game"
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,7 +20,12 @@ config/icon="res://icon.svg"
 RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
 FS="*res://Scripts/BuildingRelated/FacilityServer.gd"
 NS="*res://Scripts/NaviRelated/NaviServer.gd"
+TS="*res://Scripts/TimeRelated/time_server.gd"
 HRS="*res://Scripts/Sub-brain/HumanResource.gd"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [importer_defaults]
 
