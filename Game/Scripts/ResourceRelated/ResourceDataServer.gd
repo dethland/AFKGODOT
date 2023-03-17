@@ -9,6 +9,7 @@ var resource_ref_dic = {
 }
 
 func init_resource_ref_dic():
+	# no internal use, just dont mind what it is doing
 	var file_check = FileAccess.file_exists(resource_ref_save_path)
 	if !file_check:
 		save_resource_ref_dic()
@@ -24,13 +25,22 @@ func init_resource_ref_dic():
 
 
 func easy_resource_create(str_value : String, int_value : int):
+	# create very filexiable resource, only for debug
 	var result = ResourceData.new()
 	result.set_name(str_value)
 	result.add_element("amount", int_value)
 	return result
+	
+func ref_resource_create(str_value : String, int_value : int):
+	# create resource only if ref data exist
+	pass
+
+
+
 
 
 func convert_check_list_by_recipe(recipe):
+	# need to change, due to recipe strcutre changed
 	var result = []
 	for item_index in range(0, recipe["input"].size()):
 		result.append(easy_resource_create(recipe["input"][item_index], \
@@ -39,6 +49,7 @@ func convert_check_list_by_recipe(recipe):
 
 
 func generate_resource_by_recipe(recipe):
+#	need to change, due to recipe strcutre changed
 	var result = []
 	# load recipe data and return the product
 	# use index loop to look name and amount
@@ -57,6 +68,7 @@ func load_resource_ref_dic():
 	var file = FileAccess.open(resource_ref_save_path, FileAccess.READ)
 	var content = file.get_var()
 	return content
+
 
 	
 func _ready():
