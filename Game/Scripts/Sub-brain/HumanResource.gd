@@ -3,7 +3,7 @@ class_name HumanResource
 
 var unfinished_requests = [] # [[target_id, colonists_needed], ...]
 var out_requests = [] # [[house_id, target_id, colonists_needed], ...]
-var test_out_requests = [[1, 2, 2]]
+var test_out_requests = [[2, 1, 2], [2, 1, 2]]
 	
 func add_request(caller_id, colonists_needed):
 	unfinished_requests.append([caller_id, colonists_needed])
@@ -37,6 +37,7 @@ func send_out_requests(overide):
 		var house : Facility = FS.get_facility_by_id(request[0])
 		print("the house " + house.name)
 		house.send_people_to(request[1], request[2])
+		await get_tree().create_timer(3).timeout
 	out_requests.clear()
 
 func _process(delta):

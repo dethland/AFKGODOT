@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Colonist
 
+var max_speed
+@onready var debug = get_parent().get_parent().get_node("TempDebug")
 
 var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
 var workplace_id_ : set = set_workplace_id, get = get_workplace_id
@@ -30,16 +32,24 @@ func request_path(target_position):
 
 # return true when arrive position
 func move_to(end_pos, delta):
-	var speed = 1000
+	var speed = 200
 	var pos_diff = end_pos.x - position.x
 	# snap to end position if colonist would move past
 	if abs(pos_diff) < speed * delta:
 		position.x = end_pos.x
 		return true
+		
 	if pos_diff > 0:
-		position.x += speed * delta
+		velocity.x = speed
 	else:
-		position.x -= speed * delta
+		velocity.x = -speed
+		
+	if not is_on_floor():
+		velocity.y += 50
+	else:
+		velocity.y = 0
+	
+	move_and_slide()
 		
 	return false
 
@@ -47,9 +57,10 @@ func move_to(end_pos, delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if workplace_id_ != null and first_time:
-		path = request_path(FS.get_facility_by_id(workplace_id_).position)
+		path = request_path(FS.get_facility_by_id(workplace_id_).colonist_spawn_position)
 		first_time = false
-		print(path)
+		debug.path = path
+		debug.queue_redraw()
 		
 	if path.size() == 0:
 		return
@@ -58,5 +69,5 @@ func _process(delta):
 	
 	if is_arrived:
 		path.remove_at(0)
-		
+
 		

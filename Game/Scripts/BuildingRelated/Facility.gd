@@ -1,6 +1,7 @@
 extends Node2D
 class_name Facility
 
+@export var size : Vector2i # size of the sprite need for tile calculation
 @export var _name : String : set = set__name, get = get__name
 @export var facility_type : facilityTypes
 enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
@@ -10,7 +11,7 @@ enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
 @export var area2d_path : NodePath
 
-var recipe : Dictionary 
+var recipe : Dictionary # not working for now, need facility tool
 
 signal item_changed
 
@@ -20,7 +21,9 @@ var num_colonist : int
 
 var is_operating
 
-var ID : int : set = set_id, get = get_id # start from 1 `
+var ID : int : set = set_id, get = get_id # start from 1
+
+@onready var colonist_spawn_position = get_node("Marker2D").global_position
 
 
 func generate_resource():
@@ -59,7 +62,7 @@ func send_people_to(target_id, int_value):
 	print("I am house %s, I will send %s people to facility %s" % [ID, int_value, target_id])
 	var colonist = load(colonist_path)
 	var instance :Colonist = colonist.instantiate()
-	instance.position = self.position
+	instance.global_position = colonist_spawn_position
 	instance.set_workplace_id(target_id)
 	instance.navi = get_parent().get_node("NaviServer")
 	get_parent().get_node("Colonists").add_child(instance)
@@ -71,7 +74,7 @@ func send_resource_to(target_id, resource_data):
 	print("I am facility %s, I will send %s %s to facility %s" % [ID, resource_amount, resource_name, target_id])
 	var colonist = load(colonist_path)
 	var instance :Colonist = colonist.instantiate()
-	instance.position = self.position
+	instance.global_position = colonist_spawn_position
 	instance.set_workplace_id(target_id)
 	instance.navi = get_parent().get_node("NaviServer")
 	get_parent().get_node("Colonists").add_child(instance)
@@ -108,9 +111,11 @@ func _process(_delta):
 		# similate the cycle function called
 		match facility_type:
 			facilityTypes.CONVERTE: 
-				convert_resource()
+#				convert_resource()
+				pass
 			facilityTypes.GENERATE:
-				generate_resource()
+#				generate_resource()
+				pass
 			facilityTypes.HOUSING:
 				pass
 			facilityTypes.STORE:
