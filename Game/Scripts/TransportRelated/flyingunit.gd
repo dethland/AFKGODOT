@@ -1,28 +1,58 @@
 extends CharacterBody2D
+class_name FlyingUnit
 
+var max_speed
+@onready var debug = get_parent().get_parent().get_node("TempDebug")
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
+var workplace_id_ : set = set_workplace_id, get = get_workplace_id
+var path : PackedVector2Array
+var first_time : bool = true
+var is_requesting_path : bool  = false
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var navi : NaviServer
 
+func set_rest_place_id(rest_place_id):
+	rest_place_id_ = rest_place_id
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+func get_rest_place_id():
+	return rest_place_id_
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+func set_workplace_id(workplace_id):
+	workplace_id_ = workplace_id
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func get_workplace_id():
+	return workplace_id_
+	
+func request_path(target_position):
+	var result = NS.get_navi_path_to(position, target_position)
+	result.remove_at(0)
+	return result
+	
 
+# return true when arrive position
+func move_to(end_pos):
+	var speed = 200
+	var point_vector = end_pos - position
+	# snap to end position if colonist would move past
+	velocity = speed * point_vector.normalized()
 	move_and_slide()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if workplace_id_ != null and first_time:
+		path = request_path(FS.get_facility_by_id(workplace_id_).colonist_spawn_position)
+		first_time = false
+		debug.path = path
+		debug.queue_redraw()
+		
+	if path.size() == 0:
+		return
+	
+	var is_arrived = move_to(path[0])
+	
+	if is_arrived:
+		path.remove_at(0)
+
+		
