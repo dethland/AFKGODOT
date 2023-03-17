@@ -23,4 +23,8 @@ func _on_add_pressed():
 	RDS.resource_ref_dic["name"] = resourceData
 
 func _on_new_pressed():
-	pass # Replace with function body.
+	var num = 1
+	# in case multiple new added without changing name
+	while not RDS.resource_ref_dic.has("New Resource #" + str(num)):
+		num += 1
+	RDS.resource_ref_dic["New Resource #" + str(num)] = {}
