@@ -25,6 +25,9 @@ var ID : int : set = set_id, get = get_id # start from 1
 
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
+func send_request_for_colonist():
+	pass
+
 
 func generate_resource():
 	print(recipe)
@@ -86,6 +89,9 @@ func colonist_enter(colonist):
 func colonist_exit():
 	num_colonist -= 1
 	
+func get_desired_population():
+	return recipe["worker_capacity"]
+	
 	
 func get_population():
 	return num_colonist
@@ -98,6 +104,8 @@ func _ready():
 	if not area2d_path.is_empty():
 		var area2d : Area2D = get_node(area2d_path)
 		area2d.connect("body_entered", on_body_entered)
+	send_request_for_colonist()
+	
 
 func on_body_entered(body):
 	if body is CharacterBody2D:
