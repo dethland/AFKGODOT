@@ -25,6 +25,19 @@ var ID : int : set = set_id, get = get_id # start from 1
 
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
+
+func can_craft(recipe: Dictionary) -> bool:
+	return container.has_enough_resource(recipe["input"])
+
+func craft(recipe: Dictionary):
+	var temp;
+	if can_craft(recipe):
+		for item_index in range(0, recipe["input"].size()):
+			temp = recipe["input"][item_index].get_amount()
+			container.subtract_resource_element_quantity(recipe["input"][item_index], temp)
+		for item in recipe["output"]:
+			container.add_resource_data(item)
+
 func send_request_for_colonist():
 	var colonists_needed = get_desired_population() - num_colonist
 	if colonists_needed > 0:
