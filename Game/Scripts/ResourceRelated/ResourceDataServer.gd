@@ -35,10 +35,6 @@ func ref_resource_create(str_value : String, int_value : int):
 	# create resource only if ref data exist
 	pass
 
-
-
-
-
 func convert_check_list_by_recipe(recipe):
 	# need to change, due to recipe strcutre changed
 	var result = []

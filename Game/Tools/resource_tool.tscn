@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djpr2g8njqryn"]
 
 [ext_resource type="Script" path="res://Tools/resource_tool.gd" id="1_dx0qg"]
-[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_46od5"]
+[ext_resource type="PackedScene" uid="uid://chasjooaxedbs" path="res://Tools/item.tscn" id="2_stn4i"]
 
 [node name="resource_tool" type="Control"]
 layout_mode = 3
@@ -44,7 +44,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Name:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+[node name="NameInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -56,7 +57,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Type:"
 
-[node name="ItemList" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+[node name="TypePicker" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
@@ -73,7 +75,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Tier:"
 
-[node name="ItemList2" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+[node name="TierPicker" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
@@ -90,7 +93,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Icon_path:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+[node name="IconPathInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -138,15 +142,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Item1" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Item1" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer" instance=ExtResource("2_stn4i")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer/Item1"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("2_46od5")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer/Item1"]
-layout_mode = 2
-text = "Name:"
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Load" to="." method="_on_load_pressed"]
