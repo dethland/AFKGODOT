@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv381m5fa70f4"]
+[gd_scene load_steps=4 format=3 uid="uid://bv381m5fa70f4"]
 
 [ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_b46xj"]
 [ext_resource type="Texture2D" uid="uid://b4di23gjmnlry" path="res://Asset/Building/factory.png" id="2_2p15a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cgbt"]
+size = Vector2(24, 31)
 
 [node name="RefineIron" instance=ExtResource("1_b46xj")]
 _name = "RefineIron"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_2p15a")
+centered = false
+offset = Vector2(0, -272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(96, -15)
+shape = SubResource("RectangleShape2D_2cgbt")
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(96, -15)

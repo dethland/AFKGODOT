@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwl43lyr4om72"]
+[gd_scene load_steps=13 format=3 uid="uid://cwl43lyr4om72"]
 
 [ext_resource type="Texture2D" uid="uid://b5ib7a1jcntcx" path="res://Asset/tile-proto.png" id="1_v82sf"]
 [ext_resource type="Script" path="res://Tilemap/tile_map.gd" id="2_46ts4"]
+[ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="2_brg6x"]
+[ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="3_g11sm"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_tun4o"]
 tile_data = PackedInt32Array(0, 65536, 1, 65536, 0, 0, 65537, 65536, 1)
@@ -40,6 +42,11 @@ texture = ExtResource("1_v82sf")
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_sswvl")
 1:0/0/custom_data_0 = 2
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2d2dw"]
+scenes/1/scene = ExtResource("2_brg6x")
+scenes/1/display_placeholder = ExtResource("2_brg6x")
+scenes/2/scene = ExtResource("3_g11sm")
+
 [sub_resource type="TileSet" id="TileSet_n3f2i"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_1qfmh")
@@ -47,6 +54,7 @@ navigation_layer_0/layers = 1
 custom_data_layer_0/name = "ID"
 custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_gef7m")
+sources/1 = SubResource("TileSetScenesCollectionSource_2d2dw")
 pattern_0 = SubResource("TileMapPattern_tun4o")
 pattern_1 = SubResource("TileMapPattern_5563i")
 
