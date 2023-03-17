@@ -42,9 +42,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Name:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+[node name="NameInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+text = "hahahahah"
 
 [node name="Item5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -54,7 +56,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Type:"
 
-[node name="TextEdit" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item5"]
+[node name="TypeInput" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item5"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
@@ -77,10 +80,12 @@ layout_mode = 2
 text = "Input"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+[node name="InputContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+[node name="InputPlus" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+"
 
@@ -93,10 +98,12 @@ layout_mode = 2
 text = "Output"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+[node name="OutputContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+[node name="OutputPlus" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "+"
 
@@ -108,7 +115,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Icon_path:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+[node name="IconInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -150,6 +158,7 @@ layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel2"]
+unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -168,3 +177,8 @@ texture = ExtResource("2_ckxs5")
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer/Item1"]
 layout_mode = 2
 text = "Name:"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Load" to="." method="_on_load_pressed"]
