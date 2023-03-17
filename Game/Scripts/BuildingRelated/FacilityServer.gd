@@ -18,6 +18,8 @@ var facility_data_dic = {
 		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4}
 }
 
+var facility_data_save_path = "res://Data/FacilityRef.txt"
+
 
 # the structure need to change
 func add_facility_recipe(_name, type, time, input, output, worker):
@@ -59,3 +61,10 @@ func get_facility_by_id(int_value):
 				result = facility
 				break
 	return result
+	
+	
+func save_facility_data_dic():
+	pass
+	
+func load_facility_data_dic():
+	pass
