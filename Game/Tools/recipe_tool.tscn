@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm4te1xmbfkco"]
+[gd_scene load_steps=2 format=3 uid="uid://dm4te1xmbfkco"]
 
 [ext_resource type="Script" path="res://Tools/recipe_tool.gd" id="1_qnelb"]
-[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_ckxs5"]
 
 [node name="recipe_tool" type="Control"]
 layout_mode = 3
@@ -11,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qnelb")
+item_temp_path = "res://Tools/item.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -23,7 +23,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 400)
+custom_minimum_size = Vector2(300, 500)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -42,9 +42,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Name:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+[node name="NameInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+text = "hahahahah"
 
 [node name="Item5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -54,7 +56,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Type:"
 
-[node name="TextEdit" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item5"]
+[node name="TypeInput" type="ItemList" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item5"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
@@ -68,6 +71,32 @@ item_2/text = "Generate"
 item_3/text = "Trasport"
 item_4/text = "Store"
 
+[node name="Item6" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item6"]
+layout_mode = 2
+text = "Time:"
+
+[node name="TimeInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item6"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Item7" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item7"]
+layout_mode = 2
+text = "Worker:"
+
+[node name="WorkerInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item7"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Item2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -77,10 +106,11 @@ layout_mode = 2
 text = "Input"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+[node name="InputContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
+[node name="InputPlus" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2"]
 layout_mode = 2
 text = "+"
 
@@ -93,10 +123,11 @@ layout_mode = 2
 text = "Output"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+[node name="OutputContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
+[node name="OutputPlus" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3"]
 layout_mode = 2
 text = "+"
 
@@ -108,7 +139,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Icon_path:"
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+[node name="IconInput" type="TextEdit" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item4"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -147,24 +179,24 @@ text = "Load"
 [node name="Panel2" type="Panel" parent="CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel2"]
-layout_mode = 0
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Item1" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="ItemContianer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel2/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer/Item1"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("2_ckxs5")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer/Item1"]
-layout_mode = 2
-text = "Name:"
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item2/InputPlus" to="." method="_on_input_plus_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/VBoxContainer/Item3/OutputPlus" to="." method="_on_output_plus_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Load" to="." method="_on_load_pressed"]

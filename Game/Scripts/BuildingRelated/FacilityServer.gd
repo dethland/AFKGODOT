@@ -18,10 +18,14 @@ var facility_data_dic = {
 		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4}
 }
 
+var facility_data_save_path = "res://Data/FacilityRef.txt"
+
 
 # the structure need to change
 func add_facility_recipe(_name, type, time, input, output, worker):
-	pass
+	facility_data_dic[_name] = {"type" : type, "time" : int(time), "input" : input, "output" : output,\
+	"worker_capacity" : int(worker)}
+	print(facility_data_dic)
 
 
 func init_facility(facility_node : Facility):
@@ -59,3 +63,29 @@ func get_facility_by_id(int_value):
 				result = facility
 				break
 	return result
+	
+	
+func save_facility_data_dic():
+	var file = FileAccess.open(facility_data_save_path, FileAccess.WRITE)
+	file.store_var(facility_data_dic)
+	
+func load_facility_data_dic():
+	var file = FileAccess.open(facility_data_save_path, FileAccess.READ)
+	var content = file.get_var()
+	return content
+	
+	
+func init_facility_ref_dic():
+	# no internal use, just dont mind what it is doing
+	var file_check = FileAccess.file_exists(facility_data_save_path)
+	if !file_check:
+		save_facility_data_dic	()
+		
+	var file = FileAccess.open(facility_data_save_path, FileAccess.READ)
+	var content = file.get_var()
+	
+	if content != null:
+		save_facility_data_dic()
+		return 
+		
+	facility_data_dic =  load_facility_data_dic()
