@@ -23,10 +23,6 @@ NS="*res://Scripts/NaviRelated/NaviServer.gd"
 TS="*res://Scripts/TimeRelated/time_server.gd"
 HRS="*res://Scripts/Sub-brain/HumanResource.gd"
 
-[editor]
-
-export/convert_text_resources_to_binary=true
-
 [importer_defaults]
 
 texture={
@@ -47,6 +43,14 @@ texture={
 "process/size_limit": 0,
 "roughness/mode": 0,
 "roughness/src_normal": ""
+}
+
+[input]
+
+mouse_left={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
 }
 
 [rendering]

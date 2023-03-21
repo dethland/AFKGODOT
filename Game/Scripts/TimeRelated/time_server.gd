@@ -3,6 +3,8 @@ extends Node2D
 class_name TimeServer
 signal cycle_end
 
+var is_able = false
+
 var time = 0
 var gameday = 0
 var gamehour = 0
@@ -10,6 +12,8 @@ var gameminute = 0
 var gamesecond = 0
 
 func _ready():
+	if not is_able:
+		return
 	var timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_add_time)

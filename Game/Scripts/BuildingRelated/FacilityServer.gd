@@ -23,7 +23,9 @@ var facility_data_save_path = "res://Data/FacilityRef.txt"
 
 # the structure need to change
 func add_facility_recipe(_name, type, time, input, output, worker):
-	pass
+	facility_data_dic[_name] = {"type" : type, "time" : int(time), "input" : input, "output" : output,\
+	"worker_capacity" : int(worker)}
+	print(facility_data_dic)
 
 
 func init_facility(facility_node : Facility):
