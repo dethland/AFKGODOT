@@ -4,9 +4,11 @@ class_name ResourceDataServer
 var resource_ref_save_path = "res://Data/ResourceRef.txt"
 
 var resource_ref_dic = {
-	"iron_ore" : {"type":"ore","tier":1,"amount":0,"icon_path":""},
-	"copper_ore" : {"type":"ore","tier":1,"amount":0,"icon_path":""}
+	"iron_ore" : {"type":"ORE","tier":1,"amount":0,"icon_path":""},
+	"copper_ore" : {"type":"ORE","tier":1,"amount":0,"icon_path":""}
 }
+enum resourceType {ORE, MATERIAL} 
+
 
 func init_resource_ref_dic():
 	# no internal use, just dont mind what it is doing
@@ -33,7 +35,25 @@ func easy_resource_create(str_value : String, int_value : int):
 	
 func ref_resource_create(str_value : String, int_value : int):
 	# create resource only if ref data exist
-	pass
+	var result = ResourceData.new()
+	if not str_value in resource_ref_dic:
+		return result
+	result.set_name(str_value)
+	result.set_amount(int_value)
+	return result
+
+func convert_resource_data_list_to_array(data_list):
+	# array for saving purpose
+	var result = []
+	for RD in data_list:
+		result.append([RD.get_name(), RD.get_amount()])
+	return result
+
+func convert_array_to_resource_data_list(array):
+	# res data for game processing
+	var result = []
+	for data in array:
+		pass
 
 func convert_check_list_by_recipe(recipe):
 	# need to change, due to recipe strcutre changed
