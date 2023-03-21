@@ -1,15 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://chasjooaxedbs"]
 
-[ext_resource type="Script" path="res://Tools/item.gd" id="1_6ie2a"]
 [ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="1_qtgaf"]
+[ext_resource type="Script" path="res://Tools/item.gd" id="1_r1pxf"]
 
-[node name="Item1" type="HBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-mouse_filter = 0
-script = ExtResource("1_6ie2a")
+[node name="Item" type="HBoxContainer"]
+custom_minimum_size = Vector2(500, 128)
+script = ExtResource("1_r1pxf")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(40, 40)
+[node name="IconTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_qtgaf")
 
@@ -17,5 +16,6 @@ texture = ExtResource("1_qtgaf")
 layout_mode = 2
 text = "Name:"
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="NameLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2

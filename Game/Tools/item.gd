@@ -1,8 +1,13 @@
 extends HBoxContainer
+class_name ResourceListItem
 
 var item_name : String
 var is_mouse_in : bool = false
 var caller_node
+
+func update_data(resourceName, iconPath):
+	$NameLabel.text = resourceName
+	$IconTexture.texture = load(iconPath)
 
 func _input(event):
 	if is_mouse_in:
