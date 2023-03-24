@@ -7,9 +7,6 @@ var is_able = false
 
 var time = 0
 var gameday = 0
-var gamehour = 0
-var gameminute = 0
-var gamesecond = 0
 
 func _ready():
 	if not is_able:
@@ -28,6 +25,14 @@ func _add_time():
 		time = 0
 		emit_signal("cycle_end")
 	print(time)
+	
+	if time > 6 and time <= 18:
+		#something to set the time of day animation
+		$AnimationPlayer.play() #Just example
+		
+	elif time <= 6 and time > 18:
+		#something to set the time of night animation
+		$AnimationPlayer.play() #Just example
 
 
 func _get_callert():
