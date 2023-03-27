@@ -18,6 +18,8 @@ var facility_data_dic = {
 		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4}
 }
 
+var facility_data_dic_savable = {}
+
 var facility_data_save_path = "res://Data/FacilityRef.txt"
 
 
@@ -72,7 +74,7 @@ func save_facility_data_dic():
 func load_facility_data_dic():
 	var file = FileAccess.open(facility_data_save_path, FileAccess.READ)
 	var content = file.get_var()
-	return content
+	facility_data_dic = content
 	
 	
 func init_facility_ref_dic():
