@@ -14,7 +14,7 @@ var archive_facility_data_dic = {
 
 # this is te new data structure for the facility recipe data
 var facility_data_dic = {
-	"name" : {"type": Facility.facilityTypes.EMPTY,
+	"exp_recipe" : {"type": Facility.facilityTypes.EMPTY,
 		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4}
 }
 
@@ -36,6 +36,8 @@ func init_facility(facility_node : Facility):
 	if facility_data_dic.has(name_value):
 		facility_node.recipe = facility_data_dic[name_value]
 		facility_node.facility_type = facility_data_dic[name_value]["type"]
+	else:
+		print("This facility dose not have recipe")
 	return facility_array.size()
 	
 
@@ -91,3 +93,6 @@ func init_facility_ref_dic():
 		return 
 		
 	facility_data_dic =  load_facility_data_dic()
+
+func _ready():
+	load_facility_data_dic()

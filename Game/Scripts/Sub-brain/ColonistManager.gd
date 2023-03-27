@@ -41,6 +41,6 @@ func send_out_requests(overide):
 	out_requests.clear()
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("test_button_1"):
 		print("requst sent")
 		send_out_requests(test_out_requests)

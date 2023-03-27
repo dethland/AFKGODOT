@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://bnqe6frkyay46"]
 
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="3_cerfu"]
 [ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="4_0iegv"]
