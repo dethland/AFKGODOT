@@ -1,5 +1,5 @@
 extends Node
-class_name HumanResource
+class_name ColonistManager
 
 var unfinished_requests = [] # [[target_id, colonists_needed], ...]
 var out_requests = [] # [[house_id, target_id, colonists_needed], ...]

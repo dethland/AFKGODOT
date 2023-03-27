@@ -21,7 +21,7 @@ RDS="*res://Scripts/ResourceRelated/ResourceDataServer.gd"
 FS="*res://Scripts/BuildingRelated/FacilityServer.gd"
 NS="*res://Scripts/NaviRelated/NaviServer.gd"
 TS="*res://Scripts/TimeRelated/time_server.gd"
-HRS="*res://Scripts/Sub-brain/HumanResource.gd"
+HRS="*res://Scripts/Sub-brain/ColonistManager.gd"
 
 [importer_defaults]
 
