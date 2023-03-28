@@ -5,6 +5,7 @@
 
 [node name="Item" type="HBoxContainer"]
 custom_minimum_size = Vector2(500, 128)
+mouse_filter = 0
 script = ExtResource("1_r1pxf")
 
 [node name="IconTexture" type="TextureRect" parent="."]
@@ -19,3 +20,6 @@ text = "Name:"
 [node name="NameLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

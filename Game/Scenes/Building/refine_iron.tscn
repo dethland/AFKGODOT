@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cgbt"]
 size = Vector2(24, 31)
 
-[node name="RefineIron" instance=ExtResource("1_b46xj")]
-_name = "RefineIron"
+[node name="OreRefine" instance=ExtResource("1_b46xj")]
+_name = "ore_refine"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_2p15a")

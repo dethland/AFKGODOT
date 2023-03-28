@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qnelb")
 item_temp_path = "res://Tools/item.tscn"
+item_obj_path = "res://Tools/item_obj.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -23,7 +24,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 500)
+custom_minimum_size = Vector2(550, 600)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -46,7 +47,6 @@ text = "Name:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "hahahahah"
 
 [node name="Item5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
