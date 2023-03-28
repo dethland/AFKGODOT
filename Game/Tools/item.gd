@@ -13,8 +13,7 @@ func _input(event):
 	if is_mouse_in:
 		if event.is_action_released("mouse_left"):
 			print(item_name)
-			caller_node.load_recipe(item_name)
-
+			caller_node.load_resource(item_name)
 
 func _on_mouse_entered():
 	is_mouse_in = true
