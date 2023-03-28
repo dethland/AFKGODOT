@@ -58,11 +58,9 @@ func craft(recipe: Dictionary):
 			container.add_resource_data(item)
 
 func send_request_for_colonist():
-	if facility_type == facilityTypes.CONVERTE:
+	if facility_type == facilityTypes.CONVERTE: # bug careful
 		var colonists_needed = get_desired_population() - num_colonist
-		print(colonists_needed)
 		if colonists_needed > 0:
-			print(ID, colonists_needed)
 			CM.add_request(ID, colonists_needed)
 
 
