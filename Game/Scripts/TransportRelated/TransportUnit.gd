@@ -34,14 +34,19 @@ func move_to(end_pos, delta):
 	# snap to end position if colonist would move past
 	if abs(pos_diff) < speed * delta:
 		position.x = end_pos.x
+		get_node("AnimatedSprite2D").play("default")
 		return true
 		
 	if pos_diff > 0:
+		get_node("AnimatedSprite2D").flip_h = false
 		velocity.x = speed
 	else:
+		get_node("AnimatedSprite2D").flip_h = true
 		velocity.x = -speed
 		
 	velocity.y += 50
+	
+	get_node("AnimatedSprite2D").play("walk")
 	
 	move_and_slide()
 		
