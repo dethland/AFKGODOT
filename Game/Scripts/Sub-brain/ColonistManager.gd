@@ -7,7 +7,6 @@ var test_out_requests = [[2, 1, 2], [2, 1, 2]]
 	
 func add_request(caller_id, colonists_needed):
 	unfinished_requests.append([caller_id, colonists_needed])
-	print(unfinished_requests)
 
 func check_requests():
 	for request in unfinished_requests:
@@ -43,5 +42,7 @@ func send_out_requests(overide):
 
 func _process(delta):
 	if Input.is_action_just_pressed("test_button_1"):
-		print("requst sent")
-		send_out_requests(test_out_requests)
+		add_request(2, 1)
+		print(unfinished_requests)
+	if Input.is_action_just_pressed("test_button_2"):
+		check_requests()
