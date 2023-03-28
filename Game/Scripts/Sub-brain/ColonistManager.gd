@@ -4,6 +4,8 @@ class_name ColonistManager
 var unfinished_requests = [] # [[target_id, colonists_needed], ...]
 var out_requests = [] # [[house_id, target_id, colonists_needed], ...]
 var test_out_requests = [[2, 1, 2], [2, 1, 2]]
+
+signal requst_assign_finished
 	
 func add_request(caller_id, colonists_needed):
 	unfinished_requests.append([caller_id, colonists_needed])
@@ -36,9 +38,10 @@ func send_out_requests(overide):
 	for request in out_requests:
 		var house : Facility = FS.get_facility_by_id(request[0])
 		print("the house " + house.name)
-		house.send_people_to(request[1], request[2])
-		await get_tree().create_timer(3).timeout
+		house.add_to_colonist_queue(request.slice(1, 3))
+		
 	out_requests.clear()
+	emit_signal("requst_assign_finished")
 
 func _process(delta):
 	if Input.is_action_just_pressed("test_button_1"):

@@ -25,6 +25,8 @@ var ID : int : set = set_id, get = get_id # start from 1
 
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
+var colonist_queue_list = [] #this list used to queue sending peple request
+
 signal Progress_finish
 @onready var timer = Timer.new()
 
@@ -94,16 +96,22 @@ func get__name():
 func set__name(str_vlaue):
 	_name = str_vlaue
 	
-func send_people_to(target_id, int_value):
-	# set int_value of colonist to the target_id
-	# for now only do debug print
-	print("I am house %s, I will send %s people to facility %s" % [ID, int_value, target_id])
-	var colonist = load(colonist_path)
-	var instance :Colonist = colonist.instantiate()
-	instance.global_position = colonist_spawn_position
-	instance.set_workplace_id(target_id)
-	instance.navi = get_parent().get_node("NaviServer")
-	get_parent().get_node("Colonists").add_child(instance)
+func add_to_colonist_queue(requst_chunk):
+	colonist_queue_list.append(requst_chunk)
+	print(colonist_queue_list)
+
+func send_people_to():
+	# actual send people function
+	for requst in colonist_queue_list:
+		# requst is a list like this: [target_id, num_col_to_send]
+		for per_col in range(0, requst[1]):
+			var colonist = load(colonist_path)
+			var instance :Colonist = colonist.instantiate()
+			instance.global_position = colonist_spawn_position
+			instance.set_workplace_id(requst[0])
+			get_parent().get_node("Colonists").add_child(instance)
+			await get_tree().create_timer(3).timeout
+	
 
 
 func send_resource_to(target_id, resource_data):
@@ -136,6 +144,7 @@ func set_population(int_value):
 	
 func _ready():
 	ID = FS.init_facility(self)
+	CM.requst_assign_finished.connect(_on_requst_assign_finished)
 	# check the area2d_path exist
 	if not area2d_path.is_empty():
 		var area2d : Area2D = get_node(area2d_path)
@@ -149,6 +158,16 @@ func on_body_entered(body):
 		# check the colonist target, if self delete body
 		if body.get_workplace_id() == ID:
 			colonist_enter(body)
+
+# below are time related
+func _on_cycle_end():
+	pass
+	
+func _on_cycle_start():
+	pass
+	
+func _on_requst_assign_finished():
+	send_people_to()
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_accept"):
