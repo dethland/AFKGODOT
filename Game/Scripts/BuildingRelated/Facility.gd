@@ -17,7 +17,7 @@ signal item_changed
 
 @onready var container = ResourceDataContainer.new()
 
-var num_colonist : int
+@export var num_colonist : int
 
 var is_operating
 
@@ -39,9 +39,12 @@ func craft(recipe: Dictionary):
 			container.add_resource_data(item)
 
 func send_request_for_colonist():
-	var colonists_needed = get_desired_population() - num_colonist
-	if colonists_needed > 0:
-		CM.add_request(ID, colonists_needed)
+	if facility_type == facilityTypes.CONVERTE:
+		var colonists_needed = get_desired_population() - num_colonist
+		print(colonists_needed)
+		if colonists_needed > 0:
+			print(ID, colonists_needed)
+			CM.add_request(ID, colonists_needed)
 
 
 func generate_resource():
