@@ -1,7 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7krrc13un4m1"]
 
 [ext_resource type="Script" path="res://Scripts/TransportRelated/TransportUnit.gd" id="1_ls48v"]
-<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://pqvn05ojnbbd" path="res://Asset/Colonist/colonist.png" id="2_1f32k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_84vk5"]
@@ -22,28 +21,13 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
-=======
-[ext_resource type="Texture2D" uid="uid://pqvn05ojnbbd" path="res://Asset/Colonist/colonist.png" id="2_n8ae0"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqk84"]
->>>>>>> Stashed changes
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_ls48v")
 
-<<<<<<< Updated upstream
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(57.1, -63.1, 59.1, -63.1, 59.1, -62.1, 60.1, -62.1, 60.1, -61.1, 61.1, -61.1, 61.1, -60.1, 62.1, -60.1, 62.1, -59.1, 63.1, -59.1, 63.1, -57.1, 64, -57.1, 64, 57.1, 63.1, 57.1, 63.1, 59.1, 62.1, 59.1, 62.1, 60.1, 61.1, 60.1, 61.1, 61.1, 60.1, 61.1, 60.1, 62.1, 59.1, 62.1, 59.1, 63.1, 57.1, 63.1, 57.1, 64, -57.1, 64, -57.1, 63.1, -59.1, 63.1, -59.1, 62.1, -60.1, 62.1, -60.1, 61.1, -61.1, 61.1, -61.1, 60.1, -62.1, 60.1, -62.1, 59.1, -63.1, 59.1, -63.1, 57.1, -64, 57.1, -64, -57.1, -63.1, -57.1, -63.1, -59.1, -62.1, -59.1, -62.1, -60.1, -61.1, -60.1, -61.1, -61.1, -60.1, -61.1, -60.1, -62.1, -59.1, -62.1, -59.1, -63.1, -57.1, -63.1, -57.1, -64, 57.1, -64)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_84vk5")
 animation = &"walk"
-=======
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_n8ae0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
-shape = SubResource("CapsuleShape2D_gqk84")
->>>>>>> Stashed changes
