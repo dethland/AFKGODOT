@@ -25,6 +25,25 @@ var ID : int : set = set_id, get = get_id # start from 1
 
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
+signal Progress_finish
+@onready var timer = Timer.new()
+
+var timer_percent = 0;
+var timer_progress;
+
+func timer_set_up(t):
+	timer_percent = t/100;
+	timer.start(timer_percent)
+	timer.time_out.connect(add_timer_progress)
+
+func add_timer_progress():
+	timer_progress += 1
+	if (timer_progress == 33):
+		pass
+	if (timer_progress == 66):
+		pass
+	if (timer_progress == 100):
+		Progress_finish.emit()
 
 func can_craft(recipe: Dictionary) -> bool:
 	return container.has_enough_resource(recipe["input"])
