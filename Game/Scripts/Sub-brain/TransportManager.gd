@@ -1,5 +1,5 @@
 extends Node
-class_name TransportationManager
+class_name TransporteManager
 
 var unfinished_requests = [] # [[target_id, resource_data], ...]
 var out_requests = [] # [[sender_id, target_id, resource_data], ...]

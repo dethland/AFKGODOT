@@ -6,6 +6,11 @@ var resource_name = ""
 
 # elements will used a lot are : amount
 
+func _init(startName: String = "", startAmount: int = 0):
+	# constrction option
+	set_name(startName)
+	set_amount(startAmount)
+
 func set_name(name):
 	resource_name = name
 	

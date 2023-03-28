@@ -44,10 +44,7 @@ func move_to(end_pos, delta):
 	else:
 		velocity.x = -speed
 		
-	if not is_on_floor():
-		velocity.y += 50
-	else:
-		velocity.y = 0
+	velocity.y += 50
 	
 	move_and_slide()
 		

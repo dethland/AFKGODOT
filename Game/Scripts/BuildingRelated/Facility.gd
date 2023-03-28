@@ -116,6 +116,7 @@ func set_population(int_value):
 	
 func _ready():
 	ID = FS.init_facility(self)
+	# check the area2d_path exist
 	if not area2d_path.is_empty():
 		var area2d : Area2D = get_node(area2d_path)
 		area2d.connect("body_entered", on_body_entered)

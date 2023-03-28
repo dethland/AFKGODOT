@@ -29,16 +29,21 @@ func request_path(target_position):
 
 # return true when arrive position
 func move_to(end_pos, delta):
-	var speed = 1000
+	var speed = 200
 	var pos_diff = end_pos.x - position.x
 	# snap to end position if colonist would move past
 	if abs(pos_diff) < speed * delta:
 		position.x = end_pos.x
 		return true
+		
 	if pos_diff > 0:
-		position.x += speed * delta
+		velocity.x = speed
 	else:
-		position.x -= speed * delta
+		velocity.x = -speed
+		
+	velocity.y += 50
+	
+	move_and_slide()
 		
 	return false
 

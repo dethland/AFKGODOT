@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://djpr2g8njqryn"]
+[gd_scene load_steps=2 format=3 uid="uid://djpr2g8njqryn"]
 
 [ext_resource type="Script" path="res://Tools/resource_tool.gd" id="1_dx0qg"]
-[ext_resource type="PackedScene" uid="uid://chasjooaxedbs" path="res://Tools/item.tscn" id="2_stn4i"]
 
 [node name="resource_tool" type="Control"]
 layout_mode = 3
@@ -13,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_dx0qg")
 save = NodePath("CenterContainer/HBoxContainer/Panel/HBoxContainer/Save")
 load = NodePath("CenterContainer/HBoxContainer/Panel/HBoxContainer/Load")
+item_path = "res://Tools/item.tscn"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -135,14 +135,14 @@ custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/HBoxContainer/Panel2"]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 500.0
+offset_bottom = 400.0
 
-[node name="Item1" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer" instance=ExtResource("2_stn4i")]
+[node name="ResourceList" type="VBoxContainer" parent="CenterContainer/HBoxContainer/Panel2/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Panel/HBoxContainer/Add" to="." method="_on_add_pressed"]
