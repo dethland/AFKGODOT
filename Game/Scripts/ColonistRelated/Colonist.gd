@@ -41,16 +41,15 @@ func move_to(end_pos, delta):
 		return true
 		
 	if pos_diff > 0:
-		get_node("AnimatedSprite2D").flip_h = false
+		get_node("AnimatedSprite2D").set_flip_h(false)
 		velocity.x = speed
 	else:
-		get_node("AnimatedSprite2D").flip_h = true
+		get_node("AnimatedSprite2D").set_flip_h(true)
 		velocity.x = -speed
 		
 	velocity.y += 50
 	
 	get_node("AnimatedSprite2D").play("walk")
-	
 	move_and_slide()
 		
 	return false
