@@ -30,4 +30,3 @@ polygon = PackedVector2Array(57.1, -63.1, 59.1, -63.1, 59.1, -62.1, 60.1, -62.1,
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_84vk5")
-animation = &"walk"
