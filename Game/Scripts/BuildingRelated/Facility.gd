@@ -17,7 +17,7 @@ signal item_changed
 
 @onready var container = ResourceDataContainer.new()
 
-var num_colonist : int
+@export var num_colonist : int
 
 var is_operating
 
@@ -25,6 +25,25 @@ var ID : int : set = set_id, get = get_id # start from 1
 
 @onready var colonist_spawn_position = get_node("Marker2D").global_position
 
+signal Progress_finish
+@onready var timer = Timer.new()
+
+var timer_percent = 0;
+var timer_progress;
+
+func timer_set_up(t):
+	timer_percent = t/100;
+	timer.start(timer_percent)
+	timer.time_out.connect(add_timer_progress)
+
+func add_timer_progress():
+	timer_progress += 1
+	if (timer_progress == 33):
+		pass
+	if (timer_progress == 66):
+		pass
+	if (timer_progress == 100):
+		Progress_finish.emit()
 
 func can_craft(recipe: Dictionary) -> bool:
 	return container.has_enough_resource(recipe["input"])
@@ -39,9 +58,12 @@ func craft(recipe: Dictionary):
 			container.add_resource_data(item)
 
 func send_request_for_colonist():
-	var colonists_needed = get_desired_population() - num_colonist
-	if colonists_needed > 0:
-		CM.add_request(ID, colonists_needed)
+	if facility_type == facilityTypes.CONVERTE:
+		var colonists_needed = get_desired_population() - num_colonist
+		print(colonists_needed)
+		if colonists_needed > 0:
+			print(ID, colonists_needed)
+			CM.add_request(ID, colonists_needed)
 
 
 func generate_resource():
