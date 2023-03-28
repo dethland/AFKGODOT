@@ -41,7 +41,7 @@ func craft(recipe: Dictionary):
 func send_request_for_colonist():
 	var colonists_needed = get_desired_population() - num_colonist
 	if colonists_needed > 0:
-		HRS.add_request(ID, colonists_needed)
+		CM.add_request(ID, colonists_needed)
 
 
 func generate_resource():
