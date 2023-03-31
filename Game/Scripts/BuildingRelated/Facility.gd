@@ -152,6 +152,8 @@ func set_population(int_value):
 func _ready():
 	ID = FS.init_facility(self)
 	
+	build_test_inventory()
+	
 	print("facility: " + _name + " id: " + str(ID))
 	
 	CM.requst_assign_finished.connect(_on_requst_assign_finished)
