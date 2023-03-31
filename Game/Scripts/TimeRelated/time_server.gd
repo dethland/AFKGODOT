@@ -3,6 +3,9 @@ extends Node2D
 class_name TimeServer
 signal cycle_end
 
+signal begin_work
+signal stop_work
+
 var is_able = false
 
 var time = 0
