@@ -6,6 +6,8 @@ class_name Facility
 @export var facility_type : facilityTypes
 enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
+@export var testing_inventory = []
+
 @export_file var colonist_path
 
 
@@ -32,6 +34,12 @@ signal Progress_finish
 
 var timer_percent = 0;
 var timer_progress;
+
+func build_test_inventory():
+	for item_data in testing_inventory:
+		var item_name = item_data[0]
+		var item_amount = item_data[1]
+		container.add_resource_data(ResourceData.new(item_name, item_amount))
 
 func timer_set_up(t):
 	timer_percent = t/100;
@@ -67,7 +75,6 @@ func send_request_for_colonist():
 
 
 func generate_resource():
-	print(recipe)
 	var item_list = RDS.generate_resource_by_recipe(recipe)
 	for item in item_list:
 		container.stackable_add_resource_data(item)
