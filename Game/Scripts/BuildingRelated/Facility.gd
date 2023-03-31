@@ -151,6 +151,17 @@ func _ready():
 		area2d.connect("body_entered", on_body_entered)
 	send_request_for_colonist()
 	
+	var enough_colonists = false
+	if num_colonist > 4: #4 is example not final
+		enough_colonists = true
+	
+	if enough_colonists == true:
+		var timer = Timer.new()
+		add_child(timer)
+		timer.timeout.connect(generate_resource) #connect to gen resource
+		timer.timeout.connect(convert_resource) #connect to convert resource
+		timer.start(1)
+	
 
 func on_body_entered(body):
 	if body is CharacterBody2D:
