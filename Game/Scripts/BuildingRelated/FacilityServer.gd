@@ -15,7 +15,12 @@ var archive_facility_data_dic = {
 # this is te new data structure for the facility recipe data
 var facility_data_dic = {
 	"exp_recipe" : {"type": Facility.facilityTypes.EMPTY,
-		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4}
+		"time" : 10, "input" : [], "output" : [], "worker_capacity" : 4},
+	"ore_refine" : {"type": Facility.facilityTypes.CONVERTE, 
+	"time" : 10, "input" : [["iron_ore", 10]], "output" : [["iron_bar",10]], "worker_capacity" : 4
+	},
+	"ore_quarry" : {"type": Facility.facilityTypes.EMPTY,
+		"time" : 10, "input" : [], "output" : [["iron_ore", 10]], "worker_capacity" : 4}
 }
 
 var facility_data_dic_savable = {}
@@ -27,7 +32,6 @@ var facility_data_save_path = "res://Data/FacilityRef.txt"
 func add_facility_recipe(_name, type, time, input, output, worker):
 	facility_data_dic[_name] = {"type" : type, "time" : int(time), "input" : input, "output" : output,\
 	"worker_capacity" : int(worker)}
-	print(facility_data_dic)
 
 
 func init_facility(facility_node : Facility):
