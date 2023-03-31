@@ -19,7 +19,7 @@ var facility_data_dic = {
 	"ore_refine" : {"type": Facility.facilityTypes.CONVERTE, 
 	"time" : 10, "input" : [["iron_ore", 10]], "output" : [["iron_bar",10]], "worker_capacity" : 4
 	},
-	"ore_quarry" : {"type": Facility.facilityTypes.EMPTY,
+	"ore_quarry" : {"type": Facility.facilityTypes.GENERATE,
 		"time" : 10, "input" : [], "output" : [["iron_ore", 10]], "worker_capacity" : 4}
 }
 

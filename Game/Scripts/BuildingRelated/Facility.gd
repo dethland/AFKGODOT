@@ -143,6 +143,8 @@ func set_population(int_value):
 	num_colonist = int_value
 	
 func _ready():
+	print("facility: " + _name + " id: " + str(ID))
+	
 	ID = FS.init_facility(self)
 	CM.requst_assign_finished.connect(_on_requst_assign_finished)
 	# check the area2d_path exist
@@ -172,11 +174,11 @@ func on_body_entered(body):
 
 # below are time related
 func _on_cycle_end(): #stop_work signal
-	send_colonist_back_home()
+	#send_colonist_back_home()
 	pass
 	
 func _on_cycle_start(): #begin_work signal
-	send_colonist_to_work()
+	#send_colonist_to_work()
 	pass
 	
 func _on_requst_assign_finished():
