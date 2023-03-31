@@ -24,3 +24,6 @@ func load_item_ref():
 func _ready():
 	get_node("ItemList").clear()
 	load_item_ref()
+
+func _on_button_pressed():
+	queue_free()
