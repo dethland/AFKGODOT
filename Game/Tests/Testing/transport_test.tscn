@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxssvbhl704r1"]
+[gd_scene load_steps=6 format=3 uid="uid://dc5ec2dvi7edw"]
 
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="1_afx6y"]
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="2_vx7fo"]
 [ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Scenes/Colonist/Colonist.tscn" id="4_gwrib"]
-[ext_resource type="PackedScene" uid="uid://cbgr2wrlsmbkx" path="res://Scenes/Building/ore_quarry.tscn" id="5_6vgac"]
+[ext_resource type="PackedScene" path="res://Scenes/Building/ore_quarry.tscn" id="5_6vgac"]
 [ext_resource type="Script" path="res://Tests/Testing/TempDebug.gd" id="5_mdwi8"]
 
 [node name="FacilityPlayGround" type="Node2D"]
@@ -30,6 +30,4 @@ unique_name_in_owner = true
 
 [node name="ore_quarry" parent="." instance=ExtResource("5_6vgac")]
 position = Vector2(-23, 65)
-size = Vector2i(0, 0)
-facility_type = 0
-testing_inventory = [["iron_ore", 10]]
+testing_inventory = [["iron_ore", 10], ["gold", 10]]

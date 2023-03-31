@@ -12,6 +12,10 @@ func check_requests():
 	for request in unfinished_requests:
 		var quantity_needed = request[1].get_amount()
 		for facility in FS.get_facilities_by_type():
+			# skip if target facility
+			if facility.ID == request[0]:
+				continue
+				
 			var facility_resource_data = facility.container.get_resource_data_by_name(request[1].get_name())
 			if facility_resource_data == null:
 				continue
@@ -66,6 +70,8 @@ func _process(delta):
 		var resource_data = ResourceData.new()
 		resource_data.set_name("gold")
 		resource_data.set_amount(20)
-		add_request(2, resource_data)
+		add_request(1, resource_data)
+		print(unfinished_requests)
 	if Input.is_action_just_pressed("test_button_2"):
 		check_requests()
+		print(unfinished_requests)
