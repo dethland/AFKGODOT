@@ -143,9 +143,10 @@ func set_population(int_value):
 	num_colonist = int_value
 	
 func _ready():
+	ID = FS.init_facility(self)
+	
 	print("facility: " + _name + " id: " + str(ID))
 	
-	ID = FS.init_facility(self)
 	CM.requst_assign_finished.connect(_on_requst_assign_finished)
 	# check the area2d_path exist
 	if not area2d_path.is_empty():

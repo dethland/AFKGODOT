@@ -99,4 +99,5 @@ func init_facility_ref_dic():
 	facility_data_dic =  load_facility_data_dic()
 
 func _ready():
-	load_facility_data_dic()
+	pass
+	#load_facility_data_dic()
