@@ -49,4 +49,10 @@ func _process(delta):
 		resource_data.set_amount(20)
 		var test_out_requests = [[1, 2, resource_data]]
 		send_out_requests(test_out_requests)
-
+	if Input.is_action_just_pressed("test_button_1"):
+		var resource_data = ResourceData.new()
+		resource_data.set_name("gold")
+		resource_data.set_amount(20)
+		add_request(2, resource_data)
+	if Input.is_action_just_pressed("test_button_2"):
+		check_requests()

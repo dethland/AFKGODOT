@@ -44,8 +44,9 @@ func send_out_requests(overide):
 	emit_signal("requst_assign_finished")
 
 func _process(delta):
-	if Input.is_action_just_pressed("test_button_1"):
-		add_request(2, 1)
-		print(unfinished_requests)
-	if Input.is_action_just_pressed("test_button_2"):
-		check_requests()
+	pass
+	#if Input.is_action_just_pressed("test_button_1"):
+	#	add_request(2, 1)
+	#	print(unfinished_requests)
+	#if Input.is_action_just_pressed("test_button_2"):
+	#	check_requests()

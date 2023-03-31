@@ -171,10 +171,12 @@ func on_body_entered(body):
 			colonist_enter(body)
 
 # below are time related
-func _on_cycle_end():
+func _on_cycle_end(): #stop_work signal
+	send_colonist_back_home()
 	pass
 	
-func _on_cycle_start():
+func _on_cycle_start(): #begin_work signal
+	send_colonist_to_work()
 	pass
 	
 func _on_requst_assign_finished():
