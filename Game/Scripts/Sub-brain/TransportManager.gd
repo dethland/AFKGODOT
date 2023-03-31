@@ -13,19 +13,32 @@ func check_requests():
 		var quantity_needed = request[1].get_amount()
 		for facility in FS.get_facilities_by_type():
 			var facility_resource_data = facility.container.get_resource_data_by_name(request[1].get_name())
+			if facility_resource_data == null:
+				continue
+				
 			var resource_amount = facility_resource_data.get_amount()
 			
 			# enough resources in facility
 			if resource_amount >= quantity_needed:
 				out_requests.append([facility.get_id(), request[0], request[1]])
 				facility_resource_data.set_amount(resource_amount - quantity_needed)
+				quantity_needed = 0
 				break
 			# need more resources than in facility
 			else:
 				quantity_needed -= resource_amount
 				out_requests.append([facility.get_id(), request[0], request[1]])
 				facility_resource_data.set_amount(0)
-	unfinished_requests.clear()
+				
+		# update request quantity
+		request[1].set_amount(quantity_needed)
+
+	# remove finished requests
+	for i in range(unfinished_requests.size() - 1, -1, -1):
+		var request = unfinished_requests[i]
+		if request[1].get_amount() == 0:
+			unfinished_requests.remove_at(i)
+			
 	send_out_requests()
 
 
