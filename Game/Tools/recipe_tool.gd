@@ -24,9 +24,9 @@ func recipe_list_to_item_node(container_node:VBoxContainer, key, recipe_name):
 	for item in FS.facility_data_dic[recipe_name][key]:
 		var item_obj_temp = load(item_obj_path).instantiate()
 		item_obj_temp.data_array = item
-		print(item_obj_temp.data_array)
-		item_obj_temp.display_update()
+		
 		container_node.add_child(item_obj_temp)
+		item_obj_temp.display_update()
 	
 func display_update():
 	# loop through the recipe_name list and display the data

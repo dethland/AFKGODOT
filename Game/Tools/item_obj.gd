@@ -11,15 +11,17 @@ func get_data():
 	return data_array
 
 func display_update():
-	load_item_ref()
+	var select_index : int = 0
+	var item_name = data_array[0]
+	var item_amount = data_array[1]
+	for item in RDS.resource_ref_dic:
+		if item_name != item:
+			select_index += 1
+		else:
+			break 
+	get_node("ItemList").select(select_index)
+	get_node("TextEdit").text = str(item_amount)
 	
-	print('display_should_update')
-	for item_index in range(0, get_node("ItemList").get_item_count()):
-		print(get_node("ItemList").get_item_text(item_index))
-		if get_node("ItemList").get_item_text(item_index) == data_array[0]:
-			get_node("ItemList").select(item_index)
-			get_node("TextEdit").text = str(data_array[1])
-
 func load_item_ref():
 	# should load the ref item for editor to choose
 	for item in RDS.resource_ref_dic:
@@ -27,4 +29,5 @@ func load_item_ref():
 		
 func _ready():
 	get_node("ItemList").clear()
+	get_node("ItemList").allow_reselect = true
 	load_item_ref()
