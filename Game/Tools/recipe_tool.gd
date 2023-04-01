@@ -21,10 +21,10 @@ func item_node_to_recipe_list(container_node:VBoxContainer):
 func recipe_list_to_item_node(container_node:VBoxContainer, key, recipe_name):
 	# this function return noting, will add the child node to container after decoding
 	# this function get called when one item was selected
-	print(container_node)
 	for item in FS.facility_data_dic[recipe_name][key]:
 		var item_obj_temp = load(item_obj_path).instantiate()
 		item_obj_temp.data_array = item
+		print(item_obj_temp.data_array)
 		item_obj_temp.display_update()
 		container_node.add_child(item_obj_temp)
 	
