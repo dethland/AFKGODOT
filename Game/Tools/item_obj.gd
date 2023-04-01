@@ -11,7 +11,11 @@ func get_data():
 	return data_array
 
 func display_update():
+	load_item_ref()
+	
+	print('display_should_update')
 	for item_index in range(0, get_node("ItemList").get_item_count()):
+		print(get_node("ItemList").get_item_text(item_index))
 		if get_node("ItemList").get_item_text(item_index) == data_array[0]:
 			get_node("ItemList").select(item_index)
 			get_node("TextEdit").text = str(data_array[1])
