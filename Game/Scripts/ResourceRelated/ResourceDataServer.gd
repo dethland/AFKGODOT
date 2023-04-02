@@ -6,7 +6,8 @@ var resource_ref_save_path = "res://Data/ResourceRef.txt"
 var resource_ref_dic = {
 	"iron_ore" : {"type":"ORE","tier":1,"amount":0,"icon_path":""},
 	"copper_ore" : {"type":"ORE","tier":1,"amount":0,"icon_path":""},
-	"iron_bar" :{"type":"BAR", "tier":1, "amount":0, "icon_path":""}
+	"iron_bar" :{"type":"BAR", "tier":1, "amount":0, "icon_path":""},
+	"log" : {"type":"MATERIAL", "tier":1, "amount":0, "icon_path":""}
 }
 enum resourceType {ORE, MATERIAL} 
 
