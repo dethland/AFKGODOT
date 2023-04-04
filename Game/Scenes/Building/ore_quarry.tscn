@@ -7,7 +7,9 @@
 size = Vector2(28, 37)
 
 [node name="ore_quarry" instance=ExtResource("1_1yjbx")]
+size = null
 _name = "ore_quarry"
+facility_type = null
 num_colonist = 4
 
 [node name="Sprite2D" parent="." index="0"]
