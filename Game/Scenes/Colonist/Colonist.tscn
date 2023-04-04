@@ -1,7 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://sce8bxj7mrpk"]
+[gd_scene load_steps=10 format=3 uid="uid://sce8bxj7mrpk"]
 
 [ext_resource type="Script" path="res://Scripts/ColonistRelated/Colonist.gd" id="1_qolt3"]
 [ext_resource type="Texture2D" uid="uid://pqvn05ojnbbd" path="res://Asset/Colonist/colonist.png" id="2_c07pa"]
+[ext_resource type="Texture2D" uid="uid://bks7xdx3coqvd" path="res://Asset/Colonist/colonist_walk_animation.png" id="3_501vj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_entg0"]
+atlas = ExtResource("3_501vj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uifnj"]
+atlas = ExtResource("3_501vj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nckf"]
+atlas = ExtResource("3_501vj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgkl3"]
+atlas = ExtResource("3_501vj")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uhqf"]
 animations = [{
@@ -15,7 +32,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_c07pa")
+"texture": SubResource("AtlasTexture_entg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uifnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nckf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgkl3")
 }],
 "loop": true,
 "name": &"walk",
@@ -33,6 +59,8 @@ script = ExtResource("1_qolt3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8uhqf")
+animation = &"walk"
+frame_progress = 0.760549
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)
