@@ -39,7 +39,7 @@ func build_test_inventory():
 	for item_data in testing_inventory:
 		var item_name = item_data[0]
 		var item_amount = item_data[1]
-		container.add_resource_data(ResourceData.new(item_name, item_amount))
+		container.add_resource_data(ResourceData.new(str(item_name), int(item_amount)))
 
 func timer_set_up(t):
 	timer_percent = t/100;
@@ -125,6 +125,9 @@ func send_resource_to(target_id, resource_data):
 	var resource_amount = resource_data.get_amount()
 	var resource_name = resource_data.get_name()
 	print("I am facility %s, I will send %s %s to facility %s" % [ID, resource_amount, resource_name, target_id])
+	#var local_resource = container.get_resource_data_by_name(resource_data.get_name())
+	#var curr_amount = local_resource.get_amount()
+	#local_resource.set_amount(curr_amount - resource_amount)
 	var colonist = load(colonist_path)
 	var instance :Colonist = colonist.instantiate()
 	instance.global_position = colonist_spawn_position

@@ -36,13 +36,16 @@ func check_requests():
 				
 		# update request quantity
 		request[1].set_amount(quantity_needed)
-
+		
 	# remove finished requests
 	for i in range(unfinished_requests.size() - 1, -1, -1):
 		var request = unfinished_requests[i]
 		if request[1].get_amount() == 0:
 			unfinished_requests.remove_at(i)
-			
+	print("unfinished:")
+	print(unfinished_requests)
+	print("out:")
+	print(out_requests)
 	send_out_requests()
 
 
@@ -74,4 +77,3 @@ func _process(delta):
 		print(unfinished_requests)
 	if Input.is_action_just_pressed("test_button_2"):
 		check_requests()
-		print(unfinished_requests)
