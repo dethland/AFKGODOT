@@ -41,6 +41,7 @@ func init_facility(facility_node : Facility):
 		facility_node.recipe = facility_data_dic[name_value]
 		facility_node.facility_type = facility_data_dic[name_value]["type"]
 	else:
+		print(facility_node._name)
 		print("This facility dose not have recipe")
 	return facility_array.size()
 	
@@ -99,5 +100,4 @@ func init_facility_ref_dic():
 	facility_data_dic =  load_facility_data_dic()
 
 func _ready():
-	pass
-	#load_facility_data_dic()
+	load_facility_data_dic()

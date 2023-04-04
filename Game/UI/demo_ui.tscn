@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8qprcbqmwxmb"]
+[gd_scene load_steps=3 format=3 uid="uid://b8qprcbqmwxmb"]
 
 [ext_resource type="Script" path="res://UI/demo_ui.gd" id="1_itrx3"]
+[ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="2_70ggo"]
 
 [node name="demo_ui" type="Control"]
 layout_mode = 3
@@ -22,18 +23,24 @@ grow_vertical = 2
 [node name="QuitButton" type="Button" parent="TitleScreen"]
 layout_mode = 0
 offset_left = 600.0
-offset_top = 275.0
+offset_top = 350.0
 offset_right = 850.0
-offset_bottom = 375.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 25
 text = "Quit"
 
 [node name="PlayButton" type="Button" parent="TitleScreen"]
 layout_mode = 0
 offset_left = 297.0
-offset_top = 275.0
+offset_top = 350.0
 offset_right = 547.0
-offset_bottom = 375.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 25
 text = "Play"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(573, 247)
+texture = ExtResource("2_70ggo")
 
 [connection signal="pressed" from="TitleScreen/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="TitleScreen/PlayButton" to="." method="_on_play_button_pressed"]

@@ -10,7 +10,15 @@ var path : PackedVector2Array
 var first_time : bool = true
 var is_requesting_path : bool  = false
 
+var resource_data_ : set = set_resource_data, get = get_resource_data
+
 var navi : NaviServer
+
+func set_resource_data(resource_data):
+	resource_data_ = resource_data
+
+func get_resource_data():
+	return resource_data_
 
 func set_rest_place_id(rest_place_id):
 	rest_place_id_ = rest_place_id
