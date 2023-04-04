@@ -1,6 +1,11 @@
 extends TileMap
 
 var map
+const GRASS_TILE_SOURCE_ID = 2
+const PROTO_TILE_SOURCE_ID = 0
+const NAVI_TILE_ATLAS_ID = Vector2i(1,0)
+const TOP_TILE_Y_CORD_1 = 0 # the line where should draw navi mesh on top
+const TOP_TILE_Y_CORD_2 = 3 # the line where should draw navi mesh on top
 
 func _ready():
 	build_navigation()
@@ -11,33 +16,20 @@ func _ready():
 func build_navigation():
 	tile_set.get_source(0).create_alternative_tile(Vector2i(0,0), 1)
 	for tile_cord in get_used_cells(0):
-		var vec2_id = get_cell_atlas_coords(0, tile_cord)
+		var atlas_id = get_cell_atlas_coords(0, tile_cord)
 		var head = get_neighbor_cell(tile_cord, TileSet.CELL_NEIGHBOR_TOP_SIDE)
-		var head_vec2_id = get_cell_atlas_coords(0, head)
-		match vec2_id:
-			Vector2i(0, 0):
-				if head_vec2_id == Vector2i(-1, -1):
-					set_cell(0, head, 0, Vector2i(1,0))
-
-			Vector2i(1,1):
-				if head_vec2_id == Vector2i(-1, -1):
-					set_cell(0, head, 0, Vector2i(1,0))
+		var head_atlas_id = get_cell_atlas_coords(0, head)
+		var source_id = get_cell_source_id(0, tile_cord)
+		
+		if source_id == GRASS_TILE_SOURCE_ID:
+			if atlas_id.y == TOP_TILE_Y_CORD_1 or atlas_id.y == TOP_TILE_Y_CORD_2:
+				if head_atlas_id == Vector2i(-1, -1):
+					set_cell(0, head, 0, NAVI_TILE_ATLAS_ID)
+					
+		if source_id == PROTO_TILE_SOURCE_ID:
+			if atlas_id == Vector2i(1, 1):
+				set_cell(0, head, 0, NAVI_TILE_ATLAS_ID)
+			
 					
 					
-	for tile_cord in get_used_cells(0):
-		var vec2_id = get_cell_atlas_coords(2, tile_cord)
-		var head = get_neighbor_cell(tile_cord, TileSet.CELL_NEIGHBOR_TOP_SIDE)
-		var head_vec2_id = get_cell_atlas_coords(0, head)
-		match vec2_id:
-			Vector2i(0, 0):
-				if head_vec2_id == Vector2i(-1, -1):
-					set_cell(0, head, 0, Vector2i(1,0))
-
-			Vector2i(1,0):
-				if head_vec2_id == Vector2i(-1, -1):
-					set_cell(0, head, 0, Vector2i(1,0))
-					
-			Vector2i(2,0):
-				if head_vec2_id == Vector2i(-1, -1):
-					set_cell(0, head, 0, Vector2i(1,0))
 					
