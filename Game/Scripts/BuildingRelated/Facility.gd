@@ -103,21 +103,32 @@ func get__name():
 func set__name(str_vlaue):
 	_name = str_vlaue
 	
-func add_to_colonist_queue(requst_chunk):
-	colonist_queue_list.append(requst_chunk)
+func add_to_colonist_queue(request_chunk, resource_data = null):
+	request_chunk.append(resource_data)
+	colonist_queue_list.append(request_chunk)
 	print(colonist_queue_list)
 
 func send_people_to():
 	# actual send people function
-	for requst in colonist_queue_list:
-		# requst is a list like this: [target_id, num_col_to_send]
-		for per_col in range(0, requst[1]):
+	for request in colonist_queue_list:
+		# request is a list like this: [target_id, num_col_to_send]
+		if request[2] != null:
 			var colonist = load(colonist_path)
 			var instance :Colonist = colonist.instantiate()
+			instance.set_resource_data(request[2])
 			instance.global_position = colonist_spawn_position
-			instance.set_workplace_id(requst[0])
+			instance.set_workplace_id(request[0])
 			get_parent().get_node("Colonists").add_child(instance)
 			await get_tree().create_timer(3).timeout
+		else:
+		
+			for per_col in range(0, request[1]):
+				var colonist = load(colonist_path)
+				var instance :Colonist = colonist.instantiate()
+				instance.global_position = colonist_spawn_position
+				instance.set_workplace_id(request[0])
+				get_parent().get_node("Colonists").add_child(instance)
+				await get_tree().create_timer(3).timeout
 	
 
 
@@ -125,8 +136,9 @@ func send_resource_to(target_id, resource_data):
 	var resource_amount = resource_data.get_amount()
 	var resource_name = resource_data.get_name()
 	print("I am facility %s, I will send %s %s to facility %s" % [ID, resource_amount, resource_name, target_id])
-	#var local_resource = container.get_resource_data_by_name(resource_data.get_name())
-	#var curr_amount = local_resource.get_amount()
+	var local_resource = container.get_resource_data_by_name(resource_data.get_name())
+	var curr_amount = local_resource.get_amount()
+	print(curr_amount)
 	#local_resource.set_amount(curr_amount - resource_amount)
 	var colonist = load(colonist_path)
 	var instance :Colonist = colonist.instantiate()

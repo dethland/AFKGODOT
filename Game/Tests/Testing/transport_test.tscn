@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc5ec2dvi7edw"]
+[gd_scene load_steps=6 format=3 uid="uid://bxssvbhl704r1"]
 
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="1_afx6y"]
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="2_vx7fo"]
 [ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Scenes/Colonist/Colonist.tscn" id="4_gwrib"]
-[ext_resource type="PackedScene" uid="uid://igbtem5n8aub" path="res://Scenes/Building/ore_quarry.tscn" id="5_6vgac"]
+[ext_resource type="PackedScene" uid="uid://cbgr2wrlsmbkx" path="res://Scenes/Building/ore_quarry.tscn" id="5_6vgac"]
 [ext_resource type="Script" path="res://Tests/Testing/TempDebug.gd" id="5_mdwi8"]
 
 [node name="FacilityPlayGround" type="Node2D"]
