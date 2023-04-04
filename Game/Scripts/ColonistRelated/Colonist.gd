@@ -38,6 +38,7 @@ func request_path(target_position):
 	return result
 	
 
+
 # return true when arrive position
 func move_to(end_pos, delta):
 	var speed = 200
@@ -45,7 +46,8 @@ func move_to(end_pos, delta):
 	# snap to end position if colonist would move past
 	if abs(pos_diff) < speed * delta:
 		position.x = end_pos.x
-		get_node("AnimatedSprite2D").play("default")
+#		get_node("AnimatedSprite2D").play("default")
+
 		return true
 		
 	if pos_diff > 0:
@@ -65,8 +67,10 @@ func move_to(end_pos, delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_node("AnimatedSprite2D").play("walk")
 	if workplace_id_ != null and first_time:
 		path = request_path(FS.get_facility_by_id(workplace_id_).colonist_spawn_position)
+		path = path.slice(-1) # manually 
 		first_time = false
 		debug.path = path
 		debug.queue_redraw()
@@ -78,5 +82,9 @@ func _process(delta):
 	
 	if is_arrived:
 		path.remove_at(0)
-
 		
+	
+
+
+func _ready():
+	get_node("AnimatedSprite2D").play("walk")
