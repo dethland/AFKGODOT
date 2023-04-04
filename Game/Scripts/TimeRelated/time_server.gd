@@ -47,8 +47,8 @@ func _exact_time():
 	var format_string = "Day: %d, Time: %d" 
 	var actual_string = format_string % [gameday, _moment_time(time)]
 
-func _moment_time(time):
-	if (time/2) == float(time/2):
+func _moment_time(time): #ex: 18.5 -> 18:30 and 18 -> 18:00
+	if (time/2) != float(time/2):
 		return time + ":00"
 	else:
 		return floor(time) + ":30"
