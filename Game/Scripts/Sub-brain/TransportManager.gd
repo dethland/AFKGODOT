@@ -31,19 +31,15 @@ func check_requests():
 			# need more resources than in facility
 			else:
 				quantity_needed -= resource_amount
+				request[1].set_amount(resource_amount)
 				out_requests.append([facility.get_id(), request[0], request[1]])
 				facility_resource_data.set_amount(0)
-				
-		# update request quantity
-		request[1].set_amount(quantity_needed)
 		
-	# remove finished requests
-	for i in range(unfinished_requests.size() - 1, -1, -1):
-		var request = unfinished_requests[i]
-		if request[1].get_amount() == 0:
-			unfinished_requests.remove_at(i)
+	unfinished_requests.clear()
+
 	print("unfinished:")
-	print(unfinished_requests)
+	for r in unfinished_requests:
+		print(str(r[0]) + " " + str(r[1].get_amount()))
 	print("out:")
 	print(out_requests)
 	send_out_requests()
@@ -71,7 +67,7 @@ func _process(delta):
 		send_out_requests(test_out_requests)
 	if Input.is_action_just_pressed("test_button_1"):
 		var resource_data = ResourceData.new()
-		resource_data.set_name("gold")
+		resource_data.set_name("iron_ore")
 		resource_data.set_amount(20)
 		add_request(1, resource_data)
 		print(unfinished_requests)

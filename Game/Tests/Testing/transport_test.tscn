@@ -28,6 +28,6 @@ unique_name_in_owner = true
 position = Vector2(49, 127)
 size = Vector2i(0, 0)
 facility_type = 0
-testing_inventory = [["iron_ore", 10], [20, "gold"]]
+testing_inventory = [["iron_ore", 10]]
 
 [node name="TileMap" parent="." instance=ExtResource("1_afx6y")]
