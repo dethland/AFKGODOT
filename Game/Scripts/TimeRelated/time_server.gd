@@ -26,6 +26,7 @@ func _add_time():
 	if time == 24:
 		time = 0
 		emit_signal("cycle_end")
+		gameday += 1
 	
 	if time == 6: #at 6am signal for workers to start.
 		emit_signal("begin_work")
@@ -41,6 +42,16 @@ func _add_time():
 	elif time <= 6 and time > 18:
 		#something to set the time of night animation
 		$AnimationPlayer.play() #Just example
+
+func _exact_time():
+	var format_string = "Day: %d, Time: %d" 
+	var actual_string = format_string % [gameday, _moment_time(time)]
+
+func _moment_time(time):
+	if (time/2) == float(time/2):
+		return time + ":00"
+	else:
+		return floor(time) + ":30"
 
 func _get_callert():
 	pass
