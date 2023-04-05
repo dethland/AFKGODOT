@@ -4,6 +4,8 @@ class_name TransporteManager
 var unfinished_requests = [] # [[target_id, resource_data], ...]
 var out_requests = [] # [[sender_id, target_id, resource_data], ...]
 
+signal requst_assign_finished
+
 func add_request(caller_id, resource_data:ResourceData):
 	unfinished_requests.append([caller_id, resource_data])
 	
@@ -47,15 +49,19 @@ func check_requests():
 
 # send fufilled requests to facilities
 func send_out_requests(override=null):
+	print("send out- called")
 	if override != null:
 		for request in override:
 			var facility = FS.get_facility_by_id(request[0])
-			facility.send_resource_to(request[1], request[2])
+			facility.add_to_colonist_queue([request[1], 1], request[2])
 	else:
 		for request in out_requests:
 			var facility = FS.get_facility_by_id(request[0])
-			facility.send_resource_to(request[1], request[2])
+			facility.add_to_colonist_queue([request[1], 1], request[2])
 			out_requests.clear()
+			
+	emit_signal("requst_assign_finished")
+	print("emit the signal")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -64,7 +70,7 @@ func _process(delta):
 		resource_data.set_name("gold")
 		resource_data.set_amount(20)
 		var test_out_requests = [[1, 2, resource_data]]
-		send_out_requests(test_out_requests)
+#		send_out_requests(test_out_requests)
 	if Input.is_action_just_pressed("test_button_1"):
 		var resource_data = ResourceData.new()
 		resource_data.set_name("iron_ore")
