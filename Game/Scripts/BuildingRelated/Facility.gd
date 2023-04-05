@@ -35,6 +35,8 @@ signal Progress_finish
 var timer_percent = 0;
 var timer_progress;
 
+var wait_manager_finish_bool := false
+
 func build_test_inventory():
 	for item_data in testing_inventory:
 		var item_name = item_data[0]
@@ -129,7 +131,8 @@ func send_people_to():
 				instance.set_workplace_id(request[0])
 				get_parent().get_node("Colonists").add_child(instance)
 				await get_tree().create_timer(3).timeout
-	
+	# clear the list once finished		
+	colonist_queue_list.clear()
 
 
 func send_resource_to(target_id, resource_data):
@@ -172,6 +175,7 @@ func _ready():
 	print("facility: " + _name + " id: " + str(ID))
 	
 	CM.requst_assign_finished.connect(_on_requst_assign_finished)
+	TM.requst_assign_finished.connect(_on_requst_assign_finished)
 	# check the area2d_path exist
 	if not area2d_path.is_empty():
 		var area2d : Area2D = get_node(area2d_path)
@@ -192,7 +196,6 @@ func _ready():
 
 func on_body_entered(body):
 	if body is CharacterBody2D:
-		print('enter a body')
 		# check the colonist target, if self delete body
 		if body.get_workplace_id() == ID:
 			colonist_enter(body)
@@ -207,7 +210,12 @@ func _on_cycle_start(): #begin_work signal
 	pass
 	
 func _on_requst_assign_finished():
-	send_people_to()
+	print("requst assing get called")
+	if wait_manager_finish_bool:
+		send_people_to()
+		wait_manager_finish_bool = false
+	else:
+		wait_manager_finish_bool = true
 
 func _process(_delta):
 	if Input.is_action_just_released("ui_accept"):
