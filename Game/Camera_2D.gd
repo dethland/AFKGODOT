@@ -1,7 +1,7 @@
 extends Camera2D
 
 const camera_speed = 50
-var camera_position = 0
+var camera_position = 1
 
 func _ready():
 	pass # Replace with function body.
