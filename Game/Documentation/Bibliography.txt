@@ -3,6 +3,8 @@ ALL THE RESOURCES WE USED TO HELP US WITH THIS PROJECT
 Resources that helped with basic camera
 	https://godotengine.org/qa/13764/what-does-camera2d-set_zoom-do-exactly-confusing-results
 	https://godotengine.org/qa/29444/how-do-i-change-camera-zoom-using-a-script
+	https://docs.godotengine.org/en/stable/classes/class_camera2d.html#class-camera2d-property-offset
+	https://godotforums.org/d/21473-beginner-looking-for-2d-camera-setup-and-movement-tutorials/2
 
 Resources that helped with title screen
 	https://www.youtube.com/watch?v=Mx3iyz8AUAE&ab_channel=MasterAlbert
