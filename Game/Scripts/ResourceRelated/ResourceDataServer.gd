@@ -61,8 +61,8 @@ func convert_check_list_by_recipe(recipe):
 	# need to change, due to recipe strcutre changed
 	var result = []
 	for item_index in range(0, recipe["input"].size()):
-		result.append(easy_resource_create(recipe["input"][item_index], \
-		recipe['in_amount'][item_index]))
+		result.append(easy_resource_create(recipe["input"][item_index][0], \
+		recipe['input'][item_index][1]))
 	return result
 
 
@@ -72,8 +72,8 @@ func generate_resource_by_recipe(recipe):
 	# load recipe data and return the product
 	# use index loop to look name and amount
 	for item_index in range(0, recipe["output"].size()):
-		result.append(easy_resource_create(recipe["output"][item_index], \
-		recipe['out_amount'][item_index]))
+		result.append(easy_resource_create(recipe["output"][item_index][0], \
+		recipe['output'][item_index][1]))
 	return result
 
 

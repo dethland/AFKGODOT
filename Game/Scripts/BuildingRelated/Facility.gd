@@ -33,6 +33,7 @@ signal Progress_finish
 
 var timer_percent = 0;
 var timer_progress;
+var first_check = true
 
 var wait_manager_finish_bool := false
 
@@ -187,17 +188,12 @@ func _ready():
 		area2d.connect("body_entered", on_body_entered)
 	send_request_for_colonist()
 	
-	var enough_colonists = false
-	if num_colonist > 4: #4 is example not final
-		enough_colonists = true
-	
-#	if enough_colonists == true:
-#		var timer = Timer.new()
-#		add_child(timer)
-#		timer.timeout.connect(generate_resource) #connect to gen resource
-#		timer.timeout.connect(convert_resource) #connect to convert resource
-#		timer.start(1)
-	
+	add_child(timer)
+	match facility_type:
+		facilityTypes.CONVERTE:
+			timer.timeout.connect(craft)
+		facilityTypes.GENERATE:
+			timer.timeout.connect(generate_resource)
 
 func on_body_entered(body):
 	if body is CharacterBody2D:
@@ -222,18 +218,6 @@ func _on_requst_assign_finished():
 		wait_manager_finish_bool = true
 
 func _process(_delta):
-	if Input.is_action_just_released("ui_accept"):
-		# similate the cycle function called
-		match facility_type:
-			facilityTypes.CONVERTE: 
-#				convert_resource()
-				pass
-			facilityTypes.GENERATE:
-#				generate_resource()
-				pass
-			facilityTypes.HOUSING:
-				pass
-			facilityTypes.STORE:
-				pass
-
-			
+	if num_colonist >= recipe["worker_capacity"] and first_check:
+		timer.start(recipe["time"])
+		first_check = false	
