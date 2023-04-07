@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0ooqys4nxs4f"]
+
+[ext_resource type="Texture2D" uid="uid://qarv8dq62s8k" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_white/Shape1/cloud_shape1_5.png" id="1_2gduu"]
+[ext_resource type="Script" path="res://Tests/Testing/move_camera.gd" id="1_rbpfp"]
+[ext_resource type="Texture2D" uid="uid://pqvn05ojnbbd" path="res://Asset/Colonist/colonist.png" id="2_mse4q"]
+[ext_resource type="Texture2D" uid="uid://ds78d3mtfaxc4" path="res://Asset/Building/farm.png" id="3_kmsdd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_rbpfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+texture = ExtResource("2_mse4q")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-3.57628e-07, 0)
+scale = Vector2(7.95455, 7.35714)
+texture = ExtResource("1_2gduu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_kmsdd")
