@@ -10,7 +10,6 @@ enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
 @export_file var colonist_path
 
-
 @export var area2d_path : NodePath
 
 var recipe : Dictionary # not working for now, need facility tool
@@ -108,29 +107,33 @@ func set__name(str_vlaue):
 func add_to_colonist_queue(request_chunk, resource_data = null):
 	request_chunk.append(resource_data)
 	colonist_queue_list.append(request_chunk)
-	print(colonist_queue_list)
 
 func send_people_to():
 	# actual send people function
 	for request in colonist_queue_list:
 		# request is a list like this: [target_id, num_col_to_send]
+		# when you send colonist with resource on them
 		if request[2] != null:
+			
 			var colonist = load(colonist_path)
 			var instance :Colonist = colonist.instantiate()
 			instance.set_resource_data(request[2])
 			instance.global_position = colonist_spawn_position
 			instance.set_workplace_id(request[0])
-			get_parent().get_node("Colonists").add_child(instance)
+			get_parent().get_node("Colonists").add_child(instance) # add colonist to the nodegroup
 			await get_tree().create_timer(3).timeout
-		else:
-		
-			for per_col in range(0, request[1]):
-				var colonist = load(colonist_path)
-				var instance :Colonist = colonist.instantiate()
-				instance.global_position = colonist_spawn_position
-				instance.set_workplace_id(request[0])
-				get_parent().get_node("Colonists").add_child(instance)
-				await get_tree().create_timer(3).timeout
+			continue # skip the rest of the loop
+
+		# when you want to send colonist
+		for per_col in range(0, request[1]):
+			
+			var colonist = load(colonist_path)
+			var instance :Colonist = colonist.instantiate()
+			instance.global_position = colonist_spawn_position
+			instance.set_workplace_id(request[0])
+			get_parent().get_node("Colonists").add_child(instance)
+			colonist_exit() # call this function only you are send colonist
+			await get_tree().create_timer(3).timeout
 	# clear the list once finished		
 	colonist_queue_list.clear()
 
@@ -152,6 +155,9 @@ func send_resource_to(target_id, resource_data):
 	
 func colonist_enter(colonist):
 	colonist.queue_free()
+	if colonist.get_resource_data() != null:
+		container.add_resource_data(colonist.get_resource_data())
+		return # skip the rest of the code, for we don't want to add pepople when they have resource
 	num_colonist += 1
 	
 func colonist_exit():
@@ -159,7 +165,6 @@ func colonist_exit():
 	
 func get_desired_population():
 	return recipe["worker_capacity"]
-	
 	
 func get_population():
 	return num_colonist
@@ -210,7 +215,6 @@ func _on_cycle_start(): #begin_work signal
 	pass
 	
 func _on_requst_assign_finished():
-	print("requst assing get called")
 	if wait_manager_finish_bool:
 		send_people_to()
 		wait_manager_finish_bool = false
