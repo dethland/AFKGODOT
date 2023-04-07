@@ -37,7 +37,6 @@ func send_out_requests(overide):
 		out_requests = overide
 	for request in out_requests:
 		var house : Facility = FS.get_facility_by_id(request[0])
-		print("the house " + house.name)
 		house.add_to_colonist_queue(request.slice(1, 3))
 		
 	out_requests.clear()
@@ -47,6 +46,8 @@ func _process(delta):
 	pass
 	if Input.is_action_just_pressed("test_button_3"):
 		add_request(2, 1)
+		print("unfinished colonist request")
 		print(unfinished_requests)
+		print("----------")
 	if Input.is_action_just_pressed("test_button_4"):
 		check_requests()
