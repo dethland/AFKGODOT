@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2fujkwfix4ct"]
+[gd_scene load_steps=4 format=3 uid="uid://c2fujkwfix4ct"]
 
 [ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_6fau1"]
 [ext_resource type="Texture2D" uid="uid://ds78d3mtfaxc4" path="res://Asset/Building/farm.png" id="2_p8yu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwni"]
+size = Vector2(29, 38)
 
 [node name="Farm" instance=ExtResource("1_6fau1")]
 _name = "farm"
@@ -12,3 +15,10 @@ num_colonist = 5
 texture = ExtResource("2_p8yu7")
 centered = false
 offset = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(79.5, -19)
+shape = SubResource("RectangleShape2D_hiwni")
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(81, -19)

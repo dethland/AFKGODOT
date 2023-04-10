@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://igbtem5n8aub"]
+[gd_scene load_steps=4 format=3 uid="uid://cbgr2wrlsmbkx"]
 
 [ext_resource type="PackedScene" uid="uid://dxqsi1wfofxwl" path="res://Scenes/Building/empty_facility.tscn" id="1_1yjbx"]
 [ext_resource type="Texture2D" uid="uid://ds78d3mtfaxc4" path="res://Asset/Building/farm.png" id="2_lg4cq"]
@@ -7,9 +7,7 @@
 size = Vector2(28, 37)
 
 [node name="ore_quarry" instance=ExtResource("1_1yjbx")]
-size = null
 _name = "ore_quarry"
-facility_type = null
 num_colonist = 4
 
 [node name="Sprite2D" parent="." index="0"]
