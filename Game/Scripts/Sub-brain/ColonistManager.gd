@@ -15,6 +15,9 @@ func check_requests():
 		var colonists_needed = request[1]
 		for house in FS.get_houses_list():
 			if house is Facility:
+				if house.ID == request[0]:
+					continue
+					
 				var house_population = house.get_population()
 				
 				# enough colonists in house
@@ -44,10 +47,8 @@ func send_out_requests(overide):
 
 func _process(delta):
 	pass
-	if Input.is_action_just_pressed("test_button_3"):
-		add_request(2, 1)
-		print("unfinished colonist request")
-		print(unfinished_requests)
-		print("----------")
 	if Input.is_action_just_pressed("test_button_4"):
 		check_requests()
+		print("unfinished colonist requst after check")
+		print(unfinished_requests)
+		print("----------")
