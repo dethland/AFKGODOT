@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Colonist
 
 var max_speed
-@onready var debug = get_parent().get_parent().get_node("TempDebug")
+#@onready var debug = get_parent().get_parent().get_node("TempDebug")
 
 var rest_place_id_ : set = set_rest_place_id, get = get_rest_place_id
 var workplace_id_ : set = set_workplace_id, get = get_workplace_id
@@ -72,8 +72,8 @@ func _process(delta):
 		path = request_path(FS.get_facility_by_id(workplace_id_).colonist_spawn_position)
 		path = path.slice(-1) # manually 
 		first_time = false
-		debug.path = path
-		debug.queue_redraw()
+#		debug.path = path
+#		debug.queue_redraw()
 		
 	if path.size() == 0:
 		return
