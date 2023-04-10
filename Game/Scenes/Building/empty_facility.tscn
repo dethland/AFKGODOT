@@ -15,3 +15,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Num_colonist" type="Label" parent="."]
+offset_left = 47.0
+offset_top = -130.0
+offset_right = 87.0
+offset_bottom = -107.0
