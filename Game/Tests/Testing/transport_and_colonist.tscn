@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="1_wi7sx"]
 [ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Scenes/Colonist/Colonist.tscn" id="2_xekb5"]
 [ext_resource type="Script" path="res://Tests/Testing/TempDebug.gd" id="3_yibi7"]
-[ext_resource type="PackedScene" uid="uid://igbtem5n8aub" path="res://Scenes/Building/ore_quarry.tscn" id="4_th6y2"]
+[ext_resource type="PackedScene" uid="uid://cbgr2wrlsmbkx" path="res://Scenes/Building/ore_quarry.tscn" id="4_th6y2"]
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="5_qrsnm"]
 [ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="6_82v2s"]
 
@@ -35,7 +35,6 @@ layer_0/tile_data = PackedInt32Array(262144, 2, 0, 262145, 65538, 0, 262146, 655
 
 [node name="House" parent="." instance=ExtResource("6_82v2s")]
 position = Vector2(592, 208)
-_name = "house"
 num_colonist = 100
 
 [node name="Colonists" type="Node2D" parent="."]
