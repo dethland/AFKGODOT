@@ -7,7 +7,9 @@ var out_requests = [] # [[sender_id, target_id, resource_data], ...]
 signal requst_assign_finished
 
 func add_request(caller_id, resource_data:ResourceData):
+	
 	unfinished_requests.append([caller_id, resource_data])
+	print(unfinished_requests)
 	
 
 func check_requests():
@@ -20,6 +22,7 @@ func check_requests():
 				
 			var facility_resource_data = facility.container.get_resource_data_by_name(request[1].get_name())
 			if facility_resource_data == null:
+				print("facility dose not have resource")
 				continue
 				
 			var resource_amount = facility_resource_data.get_amount()
@@ -27,8 +30,8 @@ func check_requests():
 			# enough resources in facility
 			if resource_amount >= quantity_needed:
 				out_requests.append([facility.get_id(), request[0], request[1]])
-#				facility_resource_data.set_amount(resource_amount - quantity_needed)
-				facility_resource_data.sub_amount(quantity_needed)
+				facility_resource_data.set_amount(resource_amount - quantity_needed)
+#				facility_resource_data.sub_amount(quantity_needed)
 				quantity_needed = 0
 				break
 			# need more resources than in facility
