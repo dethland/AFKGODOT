@@ -6,6 +6,8 @@ class_name Facility
 @export var facility_type : facilityTypes
 enum facilityTypes {CONVERTE, STORE, GENERATE, HOUSING, TRANSPORT, EMPTY}
 
+@export var colonist_group_node_path: NodePath
+
 @export var testing_inventory = []
 
 @export_file var colonist_path
@@ -36,6 +38,9 @@ var timer_progress;
 var first_check = true
 
 var wait_manager_finish_bool := false
+
+func update_num_colonist_lable():
+	get_node("Num_colonist").text = str(get_population())
 
 func build_test_inventory():
 	for item_data in testing_inventory:
@@ -70,11 +75,24 @@ func craft(recipe: Dictionary):
 			container.add_resource_data(item)
 
 func send_request_for_colonist():
-	if facility_type == facilityTypes.CONVERTE: # bug careful
+	if facility_type != facilityTypes.HOUSING:
 		var colonists_needed = get_desired_population() - num_colonist
 		if colonists_needed > 0:
 			CM.add_request(ID, colonists_needed)
 
+func send_requst_for_resource():
+	if facility_type != facilityTypes.HOUSING:
+		for resource_data in recipe["input"]:
+			var resource_name = resource_data[0]
+			var input_amount = resource_data[1]
+			var current_amount = 0
+			if container.get_resource_data_by_name(resource_name):
+				current_amount = container.get_resource_data_by_name(resource_name).get_amount()
+			if current_amount<input_amount:
+				var resource_needed = ResourceData.new(resource_name, input_amount-current_amount)
+				TM.add_request(ID, resource_needed)
+				
+			
 
 func generate_resource():
 	var item_list = RDS.generate_resource_by_recipe(recipe)
@@ -121,7 +139,7 @@ func send_people_to():
 			instance.set_resource_data(request[2])
 			instance.global_position = colonist_spawn_position
 			instance.set_workplace_id(request[0])
-			get_parent().get_node("Colonists").add_child(instance) # add colonist to the nodegroup
+			get_node(colonist_group_node_path).add_child(instance) # add colonist to the nodegroup
 			await get_tree().create_timer(3).timeout
 			continue # skip the rest of the loop
 
@@ -132,9 +150,9 @@ func send_people_to():
 			var instance :Colonist = colonist.instantiate()
 			instance.global_position = colonist_spawn_position
 			instance.set_workplace_id(request[0])
-			get_parent().get_node("Colonists").add_child(instance)
+			get_node(colonist_group_node_path).add_child(instance)
 			colonist_exit() # call this function only you are send colonist
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(0.1).timeout
 	# clear the list once finished		
 	colonist_queue_list.clear()
 
@@ -160,9 +178,11 @@ func colonist_enter(colonist):
 		container.add_resource_data(colonist.get_resource_data())
 		return # skip the rest of the code, for we don't want to add pepople when they have resource
 	num_colonist += 1
+	update_num_colonist_lable()
 	
 func colonist_exit():
 	num_colonist -= 1
+	update_num_colonist_lable()
 	
 func get_desired_population():
 	return recipe["worker_capacity"]
@@ -174,6 +194,7 @@ func set_population(int_value):
 	num_colonist = int_value
 	
 func _ready():
+	update_num_colonist_lable()
 	ID = FS.init_facility(self)
 	
 	build_test_inventory()
@@ -211,11 +232,13 @@ func _on_cycle_start(): #begin_work signal
 	pass
 	
 func _on_requst_assign_finished():
-	if wait_manager_finish_bool:
-		send_people_to()
-		wait_manager_finish_bool = false
-	else:
-		wait_manager_finish_bool = true
+	# for the demo disable for now 
+#	if wait_manager_finish_bool:
+#		send_people_to()
+#		wait_manager_finish_bool = false
+#	else:
+#		wait_manager_finish_bool = true
+	send_people_to()
 
 func _process(_delta):
 	if num_colonist >= recipe["worker_capacity"] and first_check:
