@@ -1,5 +1,8 @@
 ALL THE RESOURCES WE USED TO HELP US WITH THIS PROJECT
 
+Good video to learn the GDScript basics!
+	https://www.youtube.com/watch?v=UcdwP1Q2UlU&ab_channel=GDQuest
+
 Resources that helped with basic camera
 	https://godotengine.org/qa/13764/what-does-camera2d-set_zoom-do-exactly-confusing-results
 	https://godotengine.org/qa/29444/how-do-i-change-camera-zoom-using-a-script
@@ -9,3 +12,12 @@ Resources that helped with basic camera
 Resources that helped with title screen
 	https://www.youtube.com/watch?v=Mx3iyz8AUAE&ab_channel=MasterAlbert
 	https://www.youtube.com/watch?v=VRP_CQfuXpI&ab_channel=DigitalStudent //for godot 3.2 but similar to how it works in 4.0
+
+Resources that helped with item crafting
+	https://www.youtube.com/watch?v=I9OQoYsOJs8&ab_channel=GDQuest
+
+Resources that helped with pathfinding
+	https://www.youtube.com/watch?v=_MTJ9Qz0gJk&ab_channel=bitbrain
+	https://www.youtube.com/watch?v=OaAlpWHTsPE&ab_channel=PersonDudeGames
+	https://docs.godotengine.org/en/latest/classes/class_navigationserver2d.html
+	https://godotengine.org/asset-library/asset/117
