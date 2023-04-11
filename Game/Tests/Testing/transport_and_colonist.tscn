@@ -24,8 +24,6 @@ script = ExtResource("3_yibi7")
 
 [node name="ore_quarry" parent="." instance=ExtResource("4_th6y2")]
 position = Vector2(49, 127)
-size = Vector2i(0, 0)
-facility_type = 0
 testing_inventory = [["iron_ore", 10]]
 
 [node name="TileMap" parent="." instance=ExtResource("5_qrsnm")]
