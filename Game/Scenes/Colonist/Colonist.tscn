@@ -65,3 +65,9 @@ frame_progress = 0.760549
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_khrg5")
+
+[node name="Inventory" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -38.0
+offset_right = 19.0
+offset_bottom = -15.0
