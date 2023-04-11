@@ -14,6 +14,13 @@ var resource_data_ : set = set_resource_data, get = get_resource_data
 
 var navi : NaviServer
 
+func update_inventory_label():
+	if get_resource_data() == null:
+		return
+	var item_name = get_resource_data().get_name()
+	var item_amount = get_resource_data().get_amount()
+	get_node("Inventory").text = item_name + " " + str(item_amount)
+
 func set_resource_data(resource_data):
 	resource_data_ = resource_data
 
@@ -88,3 +95,4 @@ func _process(delta):
 
 func _ready():
 	get_node("AnimatedSprite2D").play("walk")
+	update_inventory_label()
