@@ -8,7 +8,14 @@ var test_out_requests = [[2, 1, 2], [2, 1, 2]]
 signal requst_assign_finished
 	
 func add_request(caller_id, colonists_needed):
-	unfinished_requests.append([caller_id, colonists_needed])
+	if is_unique(caller_id, colonists_needed):
+		unfinished_requests.append([caller_id, colonists_needed])
+	
+func is_unique(caller_id, colonists_needed):
+	for request in unfinished_requests:
+		if request[0] == caller_id and request[1] == colonists_needed:
+			return false
+	return true
 
 func check_requests():
 	for request in unfinished_requests:

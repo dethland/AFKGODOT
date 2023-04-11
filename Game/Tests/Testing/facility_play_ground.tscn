@@ -20,7 +20,6 @@ zoom = Vector2(2, 2)
 
 [node name="House" parent="." instance=ExtResource("4_0iegv")]
 position = Vector2(46, 64)
-_name = "house"
 num_colonist = 10
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_gjbyw")]
