@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccsr03kbl5rou"]
+[gd_scene load_steps=14 format=3 uid="uid://ccsr03kbl5rou"]
 
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="1_p7cku"]
 [ext_resource type="Script" path="res://Build/Demos/Demo_1.gd" id="1_taon3"]
@@ -6,8 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="3_fedpq"]
 [ext_resource type="PackedScene" uid="uid://cbgr2wrlsmbkx" path="res://Scenes/Building/ore_quarry.tscn" id="4_u0dsw"]
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="5_ikhqi"]
+[ext_resource type="Script" path="res://Tests/Testing/move_camera.gd" id="7_f1ddq"]
+[ext_resource type="Texture2D" uid="uid://b1cd0ftknc83f" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_1.png" id="8_lobw3"]
+[ext_resource type="Texture2D" uid="uid://cpdedkoj6py8h" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_4.png" id="9_igxcm"]
+[ext_resource type="Texture2D" uid="uid://hrtdrylt10y4" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_5.png" id="10_nlgna"]
+[ext_resource type="Texture2D" uid="uid://bsgix2sjmcljy" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape5/cloud_shape5_2.png" id="11_61uc8"]
+[ext_resource type="Texture2D" uid="uid://3ihdo0qfda0s" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape6/cloud_shape6_1.png" id="12_cfn58"]
+[ext_resource type="Texture2D" uid="uid://d0vfye2riyqbw" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape1/cloud_shape1_1.png" id="13_3tlak"]
 
 [node name="Demo_1" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_taon3")
 
 [node name="TileMap" parent="." instance=ExtResource("1_p7cku")]
@@ -36,6 +44,7 @@ colonist_group_node_path = NodePath("../../Colonists")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(221, 33)
+script = ExtResource("7_f1ddq")
 
 [node name="TM" type="Button" parent="Camera2D"]
 offset_left = -560.0
@@ -55,6 +64,111 @@ text = "move colonist"
 
 [node name="SendResourceTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+texture_filter = 1
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2300, 10)
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/ParallaxLayer4"]
+z_index = -1000
+color = Color(0.207843, 0.227451, 0.290196, 1)
+polygon = PackedVector2Array(-1601, -561, -1655, 1549, 2152, 1491, 2063, -525)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+texture_filter = 1
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2300, 10)
+
+[node name="CloudShape35" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(-404.5, 460.5)
+scale = Vector2(5, 5)
+texture = ExtResource("8_lobw3")
+
+[node name="CloudShape40" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(232, 353)
+scale = Vector2(5, 5)
+texture = ExtResource("11_61uc8")
+
+[node name="CloudShape41" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(766, 403)
+scale = Vector2(5, 10)
+texture = ExtResource("12_cfn58")
+
+[node name="CloudShape36" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(831.5, 618.5)
+scale = Vector2(5, 5)
+texture = ExtResource("9_igxcm")
+
+[node name="CloudShape37" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(831.5, 618.5)
+scale = Vector2(5, 5)
+texture = ExtResource("9_igxcm")
+
+[node name="CloudShape38" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.537255, 0.541176, 0.568627, 1)
+z_as_relative = false
+position = Vector2(-474.5, 392.5)
+scale = Vector2(5, 5)
+texture = ExtResource("10_nlgna")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+texture_filter = 1
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2300, 10)
+
+[node name="CloudShape35" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(-444, -49)
+scale = Vector2(5, 5)
+texture = ExtResource("8_lobw3")
+
+[node name="CloudShape36" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(792, 109)
+scale = Vector2(5, 5)
+texture = ExtResource("9_igxcm")
+
+[node name="CloudShape37" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(792, 109)
+scale = Vector2(5, 5)
+texture = ExtResource("9_igxcm")
+
+[node name="CloudShape38" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(-514, -117)
+scale = Vector2(5, 5)
+texture = ExtResource("10_nlgna")
+
+[node name="CloudShape39" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(614, 13)
+scale = Vector2(5, 5)
+texture = ExtResource("8_lobw3")
+flip_h = true
+
+[node name="CloudShape40" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(-243, 784)
+scale = Vector2(4, 4)
+texture = ExtResource("13_3tlak")
+flip_h = true
 
 [connection signal="pressed" from="Camera2D/TM" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Camera2D/CM" to="." method="_on_button_2_pressed"]
