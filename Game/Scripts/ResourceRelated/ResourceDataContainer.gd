@@ -4,6 +4,9 @@ class_name ResourceDataContainer
 var data_array = [] # not sure where to use
 var resources = {}
 
+func get_all_resource_data():
+	return resources
+
 func get_resource_data_by_name(str_value):
 	var resource_name = str_value
 	if resource_name in resources:
@@ -14,9 +17,11 @@ func has_enough_resource(check_list):
 	if check_list.is_empty():
 		return false
 	for item in check_list:
-		if not get_resource_data_by_name(item.get_name()) is ResourceData:
+		var item_name = item[0]
+		var item_amount = item[1]
+		if not get_resource_data_by_name(item_name) is ResourceData:
 			return false
-		if not item.get_amount() >= get_resource_data_by_name(item.get_name()).get_amount():
+		if not item_amount <= get_resource_data_by_name(item_name).get_amount():
 			return false
 	return true
 
@@ -53,8 +58,8 @@ func combine_resource_data(data: ResourceData):
 				else:
 					resource.add_element(element, data_elements[element])
 					
-func subtract_resource_element_quantity(resource: ResourceData, amount):
-	resources[resource.get_name()].sub_amount(amount)
+func subtract_resource_element_quantity(item_name, amount):
+	resources[item_name].sub_amount(amount)
 	
 ## help you debug what's inside the container, print all data
 func beautiful_debug():
