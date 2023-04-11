@@ -21,3 +21,7 @@ offset_left = 47.0
 offset_top = -130.0
 offset_right = 87.0
 offset_bottom = -107.0
+
+[node name="Inventory" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
