@@ -59,5 +59,4 @@ func add_amount(num):
 
 func sub_amount(amount):
 	elements["amount"] = max(elements["amount"] - amount, 0)
-	if elements["amount"] == 0:
-		free()
+
