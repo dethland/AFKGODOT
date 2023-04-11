@@ -1,0 +1,29 @@
+Skill base 4:
+Harvester (gain ability to plant resources and tame wild animals)
+	Agriculture
+		Additional boost to agriculture efficiency
+			More boosts to agriculture efficiency
+	Livestock
+		Additional boost to livestock efficiency
+			More boosts to livestock efficiency
+
+Smith (enable the craft of basic items)
+	Steam engine workers
+		Slight boost for engine workers
+			More boats to engine workers efficiency.
+	Ore process workers
+		Slight boost for the ore processing
+			More boosts to ore processing efficiency.
+
+Builder (enable the craft of basic items)
+	Homes
+		Upgrades homes.
+			Further residential upgrade.
+	Special buildings
+		Access to create new types of buildings for new purposes.
+			__Further upgrade ex. allow flying ship for new sky islands.__
+
+Survival (start with increase health)
+	Give people more health
+		Give people more health
+		Give people more damage
