@@ -24,6 +24,10 @@ TS="*res://Scripts/TimeRelated/time_server.gd"
 CM="*res://Scripts/Sub-brain/ColonistManager.gd"
 TM="*res://Scripts/Sub-brain/TransportManager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [importer_defaults]
 
 texture={
