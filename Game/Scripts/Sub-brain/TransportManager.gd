@@ -47,13 +47,6 @@ func check_requests():
 				facility_resource_data.set_amount(0)
 		
 	unfinished_requests.clear()
-
-	print("wait-for-process:")
-	for r in unfinished_requests:
-		print(str(r[0]) + " " + str(r[1].get_amount()))
-	print("out:")
-	print(out_requests)
-	print("---------------")
 	send_out_requests()
 
 
