@@ -7,11 +7,16 @@ var out_requests = [] # [[sender_id, target_id, resource_data], ...]
 signal requst_assign_finished
 
 func add_request(caller_id, resource_data:ResourceData):
+	if is_unique(caller_id, resource_data):
+		unfinished_requests.append([caller_id, resource_data])	
 	
-	unfinished_requests.append([caller_id, resource_data])
-	print(unfinished_requests)
+func is_unique(caller_id, resource_data:ResourceData):
+	for request in unfinished_requests:
+		if request[0] == caller_id:
+			if request[1].get_name() == resource_data.get_name() and request[1].get_amount() == resource_data.get_amount():
+				return false
+	return true			
 	
-
 func check_requests():
 	for request in unfinished_requests:
 		var quantity_needed = request[1].get_amount()
