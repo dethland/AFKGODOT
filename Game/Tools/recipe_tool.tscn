@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dm4te1xmbfkco"]
 
-[ext_resource type="Script" path="res://Tools/recipe_tool.gd" id="1_qnelb"]
+[ext_resource type="Script" path="res://Tools/Scripts/recipe_tool.gd" id="1_qnelb"]
 
 [node name="recipe_tool" type="Control"]
 layout_mode = 3

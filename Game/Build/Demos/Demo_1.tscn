@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="3_fedpq"]
 [ext_resource type="PackedScene" uid="uid://cbgr2wrlsmbkx" path="res://Scenes/Building/ore_quarry.tscn" id="4_u0dsw"]
 [ext_resource type="PackedScene" uid="uid://bv381m5fa70f4" path="res://Scenes/Building/refine_iron.tscn" id="5_ikhqi"]
-[ext_resource type="Script" path="res://Tests/Testing/move_camera.gd" id="7_f1ddq"]
+[ext_resource type="Script" path="res://Tests/Archive/move_camera.gd" id="7_f1ddq"]
 [ext_resource type="Texture2D" uid="uid://b1cd0ftknc83f" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_1.png" id="8_lobw3"]
 [ext_resource type="Texture2D" uid="uid://cpdedkoj6py8h" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_4.png" id="9_igxcm"]
 [ext_resource type="Texture2D" uid="uid://hrtdrylt10y4" path="res://Asset/Placeholder/craftpix-net-374045-free-clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape4/cloud_shape4_5.png" id="10_nlgna"]

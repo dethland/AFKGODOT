@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bovf7va0c1wh6" path="res://Scenes/Building/house.tscn" id="4_0iegv"]
 [ext_resource type="PackedScene" uid="uid://sce8bxj7mrpk" path="res://Scenes/Colonist/Colonist.tscn" id="5_gjbyw"]
 [ext_resource type="PackedScene" uid="uid://cwl43lyr4om72" path="res://Tilemap/tile_map.tscn" id="5_jjav4"]
-[ext_resource type="Script" path="res://Tests/Testing/TempDebug.gd" id="6_k2kqt"]
+[ext_resource type="Script" path="res://Tests/Archive/TempDebug.gd" id="6_k2kqt"]
 
 [node name="FacilityPlayGround" type="Node2D"]
 

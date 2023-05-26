@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chasjooaxedbs"]
 
 [ext_resource type="Texture2D" uid="uid://c88esh2ptrqfc" path="res://icon.svg" id="1_qtgaf"]
-[ext_resource type="Script" path="res://Tools/item.gd" id="1_r1pxf"]
+[ext_resource type="Script" path="res://Tools/Scripts/item.gd" id="1_r1pxf"]
 
 [node name="Item" type="HBoxContainer"]
 custom_minimum_size = Vector2(500, 128)
